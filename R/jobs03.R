@@ -1,6 +1,6 @@
-source("~/Team Scotts Dropbox/David Lee/Work/fsp-test/R/urls.R")
-source("~/Team Scotts Dropbox/David Lee/Work/fsp-test/R/acquire.R")
-source("~/Team Scotts Dropbox/David Lee/Work/fsp-test/R/helpers-jobs03.R")
+source(here::here("R", "urls.R"))
+source(here::here("R", "acquire.R"))
+source(here::here("R", "helpers-jobs03.R"))
 
 
 get_jobs03_data <- function(){
