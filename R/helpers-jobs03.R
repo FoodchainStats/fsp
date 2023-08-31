@@ -41,8 +41,8 @@ jobs03_date2 <- function(string) {
 
 jobs03_sectors <- function(){
   
-  sectors <- tibble::tibble(sector = c("Manufacturing", "Manufacturing", "Wholesale", "Retail", "Retail", "Catering", "Catering", "Catering"),
-                            sic = c("10.1-5", "10.6-8", "46.30", "47.20", "47.11", "56.10", "56.20", "56.30"))
+  sectors <- tibble::tibble(sector = c("Manufacturing", "Manufacturing", "Manufacturing", "Manufacturing", "Wholesale", "Wholesale", "Retail", "Retail", "Catering", "Catering", "Catering", "Fishing"),
+                            sic_division = c("10.1-5", "10.6-8", "10.9", "11-12", "46.30", "46.20", "47.20", "47.11", "56.10", "56.20", "56.30", "03"))
   
   return(sectors)
 }
