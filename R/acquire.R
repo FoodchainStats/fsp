@@ -67,6 +67,14 @@ acquire_ct <- function(path){
 
 
 
+#' Title
+#'
+#' @param path 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 acquire_ag_workforce <- function(path) {
   
   if (!missing(path)) {
