@@ -2,10 +2,10 @@
 % Please edit documentation in R/urls.R
 \name{url_ct}
 \alias{url_ct}
-\title{Title}
+\title{URL for the current Consumer Trends dataset}
 \usage{
 url_ct()
 }
 \description{
-Title
+URL for the current Consumer Trends dataset
 }

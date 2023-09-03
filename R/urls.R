@@ -1,9 +1,10 @@
-#' Title
+#' URL for the current JOBS03 dataset
 #'
-#' @return
+#' @return a url for JOBS03
 #' @export
 #'
 #' @examples
+#' 
 url_jobs03 <- function() {
   url <- "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/employeejobsbyindustryjobs03"
   
@@ -15,12 +16,14 @@ url_jobs03 <- function() {
   
   file <- paste0("https://www.ons.gov.uk", link)
   
+  # see dirname and basename to check the filename
+  
   return(file)
   
 }
 
 
-#' Title
+#' URL for the current Consumer Trends dataset
 #'
 #' @return
 #' @export
@@ -33,9 +36,11 @@ url_ct <- function() {
 
 
 
-#' Title
+#' URL for Defra Agricultural Workforce data
 #'
-#' @return
+#' @return The url for the landing page that contains the dataset.
+#'   get_jobs03_data() uses this function and some webscraping to download and
+#'   extract thte actual data file.
 #' @export
 #'
 #' @examples

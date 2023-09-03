@@ -2,10 +2,15 @@
 % Please edit documentation in R/urls.R
 \name{url_ag_workforce}
 \alias{url_ag_workforce}
-\title{Title}
+\title{URL for Defra Agricultural Woorkforce data}
 \usage{
 url_ag_workforce()
 }
+\value{
+The landing page that contains the dataset. get_jobs03_data() uses
+this function and some webscraping to download and extract thte actual data
+file.
+}
 \description{
-Title
+URL for Defra Agricultural Woorkforce data
 }

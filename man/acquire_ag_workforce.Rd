@@ -2,13 +2,16 @@
 % Please edit documentation in R/acquire.R
 \name{acquire_ag_workforce}
 \alias{acquire_ag_workforce}
-\title{Title}
+\title{Download Defra Agricultural Workforce dataset}
 \usage{
 acquire_ag_workforce(path)
 }
 \arguments{
-\item{path}{}
+\item{path}{Folder to put the downloaded data in. If missing a tempfile will be created.}
+}
+\value{
+The file path and name of the downloaded file.
 }
 \description{
-Title
+Download Defra Agricultural Workforce dataset
 }

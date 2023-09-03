@@ -2,13 +2,16 @@
 % Please edit documentation in R/acquire.R
 \name{acquire_jobs03}
 \alias{acquire_jobs03}
-\title{Title}
+\title{Download ONS JOBS03 dataset}
 \usage{
 acquire_jobs03(path)
 }
 \arguments{
-\item{path}{}
+\item{path}{Folder to put the downloaded data in. If missing a tempfile will be created.}
+}
+\value{
+The file path and name of the downloaded file.
 }
 \description{
-Title
+Download ONS JOBS03 dataset
 }

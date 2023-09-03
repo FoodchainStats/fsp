@@ -2,10 +2,13 @@
 % Please edit documentation in R/urls.R
 \name{url_jobs03}
 \alias{url_jobs03}
-\title{Title}
+\title{URL for the current JOBS03 dataset}
 \usage{
 url_jobs03()
 }
+\value{
+a url for JOBS03
+}
 \description{
-Title
+URL for the current JOBS03 dataset
 }

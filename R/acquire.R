@@ -1,8 +1,8 @@
-#' Title
+#' Download ONS JOBS03 dataset
 #'
-#' @param path 
+#' @param path Folder to put the downloaded data in. If missing a tempfile will be created. 
 #'
-#' @return
+#' @return The file path and name of the downloaded file.
 #' @export
 #'
 #' @examples
@@ -33,11 +33,11 @@ acquire_jobs03 <- function(path){
 
 
 
-#' Title
+#' Download ONS Consumer Trends dataset
 #'
-#' @param path 
+#' @param path Folder to put the downloaded data in. If missing a tempfile will be created.
 #'
-#' @return
+#' @return The file path and name of the downloaded file.
 #' @export
 #'
 #' @examples
@@ -67,11 +67,11 @@ acquire_ct <- function(path){
 
 
 
-#' Title
+#' Download Defra Agricultural Workforce dataset
 #'
-#' @param path 
+#' @param path Folder to put the downloaded data in. If missing a tempfile will be created.
 #'
-#' @return
+#' @return The file path and name of the downloaded file.
 #' @export
 #'
 #' @examples
