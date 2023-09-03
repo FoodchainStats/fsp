@@ -7,8 +7,11 @@
 url_jobs03()
 }
 \value{
-a url for JOBS03
+The url for JOBS03.
 }
 \description{
 URL for the current JOBS03 dataset
+}
+\examples{
+url_jobs03()
 }

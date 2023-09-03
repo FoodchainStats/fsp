@@ -6,6 +6,12 @@
 \usage{
 url_ct()
 }
+\value{
+The url for the dataset.
+}
 \description{
 URL for the current Consumer Trends dataset
+}
+\examples{
+url_ct()
 }

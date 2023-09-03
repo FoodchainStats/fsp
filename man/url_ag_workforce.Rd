@@ -2,15 +2,18 @@
 % Please edit documentation in R/urls.R
 \name{url_ag_workforce}
 \alias{url_ag_workforce}
-\title{URL for Defra Agricultural Woorkforce data}
+\title{URL for Defra Agricultural Workforce data}
 \usage{
 url_ag_workforce()
 }
 \value{
-The landing page that contains the dataset. get_jobs03_data() uses
-this function and some webscraping to download and extract thte actual data
-file.
+The url for the landing page that contains the dataset.
+\code{\link[=get_jobs03_data]{get_jobs03_data()}} uses this function and some webscraping to download and
+extract thte actual data file.
 }
 \description{
-URL for Defra Agricultural Woorkforce data
+URL for Defra Agricultural Workforce data
+}
+\examples{
+url_ag_workforce()
 }
