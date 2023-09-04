@@ -2,10 +2,13 @@
 % Please edit documentation in R/jobs03.R
 \name{get_jobs03_data}
 \alias{get_jobs03_data}
-\title{Title}
+\title{Extract data from a JOBS03 xls file}
 \usage{
 get_jobs03_data(file)
 }
+\arguments{
+\item{file}{A JOBS03 xls file. If omitted, file will be downloaded}
+}
 \description{
-Title
+Extract data from a JOBS03 xls file
 }

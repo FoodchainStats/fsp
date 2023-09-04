@@ -29,3 +29,18 @@ You can install the development version of fsp from [GitHub](https://github.com/
 devtools::install_github("FoodchainStats/fsp")
 ```
 
+
+## JOBS03 workflow
+
+
+```{r jobs03, message=FALSE, warning=FALSE}
+library(fsp)
+
+j <- acquire_jobs03()
+
+jobs03 <- get_jobs03_data(j)
+
+knitr::kable(head(jobs03))
+
+```
+

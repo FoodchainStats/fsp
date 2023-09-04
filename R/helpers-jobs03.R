@@ -39,6 +39,13 @@ jobs03_date2 <- function(string) {
   
 }
 
+#' Dataset of JOBS03 SIC codes and food chain sectors
+#'
+#' @return A tibble of SIC codes and sectors
+#' @export
+#'
+#' @examples
+#' jobs03_sectors()
 jobs03_sectors <- function(){
   
   sectors <- tibble::tibble(sector = c("Manufacturing", "Manufacturing", "Manufacturing", "Manufacturing", "Wholesale", "Wholesale", "Retail", "Retail", "Catering", "Catering", "Catering", "Fishing"),

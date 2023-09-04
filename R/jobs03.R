@@ -1,14 +1,26 @@
-#' Title
+#' Extract data from a JOBS03 xls file
+#'
+#' @param file A JOBS03 xls file. If omitted, file will be downloaded
 #'
 #' @return
 #' @export
 #'
 #' @examples
-get_jobs03_data <- function(file){
+get_jobs03_data <- function(file, sheet = "8. GB Totals"){
   
-  jobs03 <- acquire_jobs03()
-
-  data <- readxl::read_excel(jobs03, sheet = "8. GB Totals", skip = 2,col_types = c("text")) 
+  if(missing(file)) {
+    jobs03 <- acquire_jobs03()
+  } else {
+    jobs03 <- file
+  }
+  
+  if(is.na(readxl::excel_format(jobs03))) {
+    stop(paste(jobs03, "is not an xls or xlsx spreadsheet file"))
+  }
+  
+  # if(which(readxl::excel_sheets(jobs03) == "8. GB Totals"))
+  
+  data <- readxl::read_excel(jobs03, sheet = "8. GB Totals", skip = 2, col_types = c("text")) 
   
   out <- data|> 
     dplyr::mutate(date = jobs03_date(.data$`...1`)) |> 
