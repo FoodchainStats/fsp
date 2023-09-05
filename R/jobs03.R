@@ -1,6 +1,7 @@
 #' Extract data from a JOBS03 xls file
 #'
 #' @param file A JOBS03 xls file. If omitted, file will be downloaded
+#' @param sheet Spreadsheet tab name or number
 #'
 #' @return
 #' @export
@@ -18,7 +19,9 @@ get_jobs03_data <- function(file, sheet = "8. GB Totals"){
     stop(paste(jobs03, "is not an xls or xlsx spreadsheet file"))
   }
   
-  # if(which(readxl::excel_sheets(jobs03) == "8. GB Totals"))
+  if(any(grepl("8. GB Totals", readxl::excel_sheets(x))) == FALSE) {
+    stop("File does not contain a tab named `8. GB Totals`. \nIf your file does contain a valid JOBS03 tab, please specify the sheet name or number.")
+  }
   
   data <- readxl::read_excel(jobs03, sheet = "8. GB Totals", skip = 2, col_types = c("text")) 
   
