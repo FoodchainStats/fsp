@@ -17,9 +17,7 @@ get_jobs03_data <- function(file, sheet = "8. GB Totals"){
   
   if(is.na(readxl::excel_format(jobs03))) {
     stop(paste(jobs03, "is not an xls or xlsx spreadsheet file"))
-  }
-  
-  if(any(grepl("8. GB Totals", readxl::excel_sheets(x))) == FALSE) {
+  } else if (any(grepl("8. GB Totals", readxl::excel_sheets(x))) == FALSE) {
     stop("File does not contain a tab named `8. GB Totals`. \nIf your file does contain a valid JOBS03 tab, please specify the sheet name or number.")
   }
   
