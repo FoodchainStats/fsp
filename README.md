@@ -39,3 +39,23 @@ knitr::kable(head(jobs03))
 | 1996-12-01 | A           | 01           | Crop and animal production, hunting and related service activities |   226 |
 | 1997-03-01 | A           | 01           | Crop and animal production, hunting and related service activities |   222 |
 | 1997-06-01 | A           | 01           | Crop and animal production, hunting and related service activities |   246 |
+
+## Agricultural workforce
+
+``` r
+library(fsp)
+w <- acquire_ag_workforce()
+
+ag_workforce <- fsp::get_ag_workforce(w)
+
+knitr::kable(head(ag_workforce))
+```
+
+| year | country | category                                                          |  value |
+|:-----|:--------|:------------------------------------------------------------------|-------:|
+| 2015 | England | Total labour force (incl. farmers and spouses)                    | 304796 |
+| 2015 | England | Farmers, business partners, directors and spouses                 | 173963 |
+| 2015 | England | Farmers, business partners, directors and spouses - Full time     |  89954 |
+| 2015 | England | Farmers, business partners, directors and spouses - Part time (a) |  84009 |
+| 2015 | England | Regular employees, salaried managers and - Part time (a)          | 130833 |
+| 2015 | England | Regular employees, salaried managers and - Regular employees (c)  |  85894 |

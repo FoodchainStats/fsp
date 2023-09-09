@@ -1,18 +1,30 @@
+#' Extract data from an Agricultural workforce ods file
+#'
+#' @param file A spreadsheet in ods format. If omitted, will be downloaded.
+#'
+#' @return A tibble of workforce data
+#' @export
+#'
+#' @examples
 get_ag_workforce <- function(file) {
+  
+  if(missing(file)) {
+    file <- acquire_ag_workforce()
+  } 
 
   file <- readODS::read_ods(file, sheet = "Ag_workforce_by_country", col_names = FALSE)
     
   cells <- unpivotr::as_cells(file) |> 
     dplyr::filter(dplyr::between(row, 2, 18)) |> 
     # dplyr::select(row, col, data_type, numeric, character, date) |> 
-    unpivotr::behead("left", cat1) |> 
-    unpivotr::behead("left", cat2) |> 
-    unpivotr::behead("left", cat3) 
+    unpivotr::behead("left", "cat1") |> 
+    unpivotr::behead("left", "cat2") |> 
+    unpivotr::behead("left", "cat3") 
 
   title <- 
-    dplyr::filter(cells, chr == "England") |> 
-    dplyr::select(row, col) |> 
-    dplyr::mutate(row = row-1) |> 
+    dplyr::filter(cells, .data$chr == "England") |> 
+    dplyr::select(.data$row, .data$col) |> 
+    dplyr::mutate(row = .data$row-1) |> 
     dplyr::inner_join(cells, by = c("row", "col"))
 
 
@@ -25,20 +37,20 @@ data <- purrr::map(partitions$cells, \(x){
   
   year <- x |> 
     dplyr::filter(row == 2) |> 
-    dplyr::select(row, col, year = chr) |> 
+    dplyr::select(row, col, year = .data$chr) |> 
     tidyr::fill(year, .direction = "downup")
   
   
   out <- data_cells |> 
     unpivotr::enhead(year, "up") |> 
-    unpivotr::behead("up", country) |> 
-    dplyr::filter(!is.na(chr)) |> 
-    tidyr::fill(cat1, .direction = "down") |> 
-    tidyr::fill(cat2, .direction = "down") |> 
-    dplyr::mutate(category = paste(cat1, cat2, cat3, sep = " - "),
-                  category = stringr::str_remove_all(category, " - NA"),
-                  chr = as.numeric(chr)) |> 
-    dplyr::select(year, country, category, value = chr)
+    unpivotr::behead("up", "country") |> 
+    dplyr::filter(!is.na(.data$chr)) |> 
+    tidyr::fill(.data$cat1, .direction = "down") |> 
+    tidyr::fill(.data$cat2, .direction = "down") |> 
+    dplyr::mutate(category = paste(.data$cat1, .data$cat2, .data$cat3, sep = " - "),
+                  category = stringr::str_remove_all(.data$category, " - NA"),
+                  chr = as.numeric(.data$chr)) |> 
+    dplyr::select(year, .data$country, .data$category, value = .data$chr)
   
   return(out)
   

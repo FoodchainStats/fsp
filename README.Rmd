@@ -44,3 +44,14 @@ knitr::kable(head(jobs03))
 
 ```
 
+## Agricultural workforce
+
+```{r, message=FALSE, warning=FALSE}
+library(fsp)
+w <- acquire_ag_workforce()
+
+ag_workforce <- fsp::get_ag_workforce(w)
+
+knitr::kable(head(ag_workforce))
+```
+
