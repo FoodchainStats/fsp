@@ -44,6 +44,7 @@ data <- purrr::map(partitions$cells, \(x){
   out <- data_cells |> 
     unpivotr::enhead(year, "up") |> 
     unpivotr::behead("up", "country") |> 
+    dplyr::group_by(.data$country) |> 
     dplyr::filter(!is.na(.data$chr)) |> 
     tidyr::fill(.data$cat1, .direction = "down") |> 
     tidyr::fill(.data$cat2, .direction = "down") |> 

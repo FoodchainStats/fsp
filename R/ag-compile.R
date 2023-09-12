@@ -11,7 +11,7 @@ w <- acquire_ag_workforce()
 ag <- get_ag_workforce(w)
 
 ag_gb <- ag |> 
-  dplyr::filter(country %in% c("England", "Wales", "Scotland"),
+  dplyr::filter(country %in% c("England", "Wales", "Scotland", "Scotland(e)"),
                 category == "Total labour force (incl. farmers and spouses)") |> 
   dplyr::group_by(year) |> 
   dplyr::summarise(value = sum(value)) |> 
