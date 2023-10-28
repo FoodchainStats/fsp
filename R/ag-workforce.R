@@ -50,7 +50,8 @@ data <- purrr::map(partitions$cells, \(x){
     tidyr::fill(.data$cat2, .direction = "down") |> 
     dplyr::mutate(category = paste(.data$cat1, .data$cat2, .data$cat3, sep = " - "),
                   category = stringr::str_remove_all(.data$category, " - NA"),
-                  chr = as.numeric(.data$chr)) |> 
+                  chr = as.numeric(.data$chr),
+                  country = stringr::str_remove(.data$country, "\\([a-z]\\)")) |> 
     dplyr::select(year, .data$country, .data$category, value = .data$chr)
   
   return(out)

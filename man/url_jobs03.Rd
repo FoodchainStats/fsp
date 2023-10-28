@@ -13,5 +13,7 @@ The url for JOBS03.
 URL for the current JOBS03 dataset
 }
 \examples{
+\dontrun{
 url_jobs03()
+}
 }

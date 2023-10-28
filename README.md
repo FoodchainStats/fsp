@@ -26,7 +26,6 @@ library(fsp)
 
 j <- acquire_jobs03()
 
-
 jobs03 <- get_jobs03_data(j)
 
 knitr::kable(head(jobs03))

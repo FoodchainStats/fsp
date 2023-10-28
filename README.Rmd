@@ -55,6 +55,5 @@ ag_workforce <- fsp::get_ag_workforce(w)
 knitr::kable(head(ag_workforce))
 
 
-
 ```
 

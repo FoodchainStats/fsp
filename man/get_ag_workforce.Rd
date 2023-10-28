@@ -9,6 +9,9 @@ get_ag_workforce(file)
 \arguments{
 \item{file}{A spreadsheet in ods format. If omitted, will be downloaded.}
 }
+\value{
+A tibble of workforce data
+}
 \description{
 Extract data from an Agricultural workforce ods file
 }

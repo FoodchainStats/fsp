@@ -4,7 +4,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url_jobs03()
+#' }
 url_jobs03 <- function() {
   url <- "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/employeejobsbyindustryjobs03"
   

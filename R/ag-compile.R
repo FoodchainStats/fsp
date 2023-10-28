@@ -1,6 +1,6 @@
-#' Title
+#' Compile GB Agricultural workforce data
 #'
-#' @return
+#' @return A dataframe of quarterly data
 #' @export
 #'
 #' @examples
@@ -20,7 +20,9 @@ ag_gb <- ag |>
   dplyr::select(-year)
 
 mindate <- min(ag_gb$date)
-maxdate <- max(ag_gb$date)
+# extend the max date to the whole of the latest year. But latest jobs03 might
+# not run up to December. How to handle?
+maxdate <- lubridate::make_date(lubridate::year(max(ag_gb$date)), month = 12, day = 1)
 
 z <- data.frame(date = seq.Date(mindate, maxdate, by = "3 month")) |>
   dplyr::left_join(ag_gb) |> 
