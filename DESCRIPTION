@@ -23,3 +23,6 @@ Imports:
     unpivotr
 URL: https://foodchainstats.github.io/fsp/
 Config/Needs/website: rmarkdown
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

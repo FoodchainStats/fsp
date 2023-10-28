@@ -12,3 +12,9 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(fsp)
 ```
+
+## What this is supposed to be
+
+The idea is to collate a set of functions and instructions for updating the
+pocketbook [usethis::use_article()] to make guidance for each item in the
+publication.
