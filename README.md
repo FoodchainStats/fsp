@@ -59,3 +59,52 @@ knitr::kable(head(ag_workforce))
 | 2015 | England | Farmers, business partners, directors and spouses - Part time (a) |  84009 |
 | 2015 | England | Regular employees, salaried managers and - Part time (a)          | 130833 |
 | 2015 | England | Regular employees, salaried managers and - Regular employees (c)  |  85894 |
+
+## Process
+
+``` r
+
+lvls <- c("Agriculture",
+          "Fishing",
+          "Manufacturing",
+          "Wholesale",
+          "Retail",
+          "Catering")
+
+ag_gb <- fsp::compile_ag()
+
+food <- fsp::jobs03_sectors() |> 
+  dplyr::left_join(fsp::get_jobs03_data()) |> 
+  dplyr::group_by(sector, date) |> 
+  dplyr::summarise(value = sum(value)) |> 
+  dplyr::bind_rows(ag_gb) |> 
+  dplyr::mutate(sector = forcats::fct(sector, levels = lvls))
+
+
+
+food |> 
+  dplyr::filter(date >= "2020-01-01") |> 
+  ggplot2::ggplot() +
+  ggplot2::geom_point(ggplot2::aes(x = date, y = value, colour = sector)) +
+  ggplot2::geom_line(ggplot2::aes(x = date, y = value, colour = sector))
+```
+
+<img src="man/figures/README-process-1.png" width="100%" />
+
+``` r
+
+
+food |>
+  dplyr::group_by(sector) |>
+  dplyr::slice_max(date) |> 
+  knitr::kable()
+```
+
+| sector        | date       |    value |
+|:--------------|:-----------|---------:|
+| Agriculture   | 2022-12-01 |  418.429 |
+| Fishing       | 2023-06-01 |   10.000 |
+| Manufacturing | 2023-06-01 |  418.000 |
+| Wholesale     | 2023-06-01 |  234.000 |
+| Retail        | 2023-06-01 | 1119.000 |
+| Catering      | 2023-06-01 | 2120.000 |
