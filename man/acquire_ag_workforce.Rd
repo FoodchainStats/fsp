@@ -7,11 +7,20 @@
 acquire_ag_workforce(path)
 }
 \arguments{
-\item{path}{Folder to put the downloaded data in. If missing a tempfile will be created.}
+\item{path}{Folder to put the downloaded data in. If missing a tempfile will
+be created. If specified the downloaded file will be named
+'ag_workforce.ods'.}
 }
 \value{
 The file path and name of the downloaded file.
 }
 \description{
 Download Defra Agricultural Workforce dataset
+}
+\examples{
+\dontrun{
+jobs03 <- acquire_ag_workforce()
+
+file <- acquire_ag_workforce("~/downloads")
+}
 }

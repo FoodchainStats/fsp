@@ -9,8 +9,21 @@ get_jobs03_data(file, sheet = "8. GB Totals")
 \arguments{
 \item{file}{A JOBS03 xls file. If omitted, file will be downloaded}
 
-\item{sheet}{Spreadsheet tab name or number}
+\item{sheet}{Spreadsheet tab name or number.}
+}
+\value{
+A dataframe of employment data
 }
 \description{
 Extract data from a JOBS03 xls file
+}
+\examples{
+\dontrun{
+# dowload in one go
+data <- get_jobs03_data()
+
+# or download first
+jobs <- acquire_jobs03()
+data <- get_jobs03_data(jobs)
+}
 }

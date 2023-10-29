@@ -1,11 +1,17 @@
 #' Download ONS JOBS03 dataset
 #'
-#' @param path Folder to put the downloaded data in. If missing a tempfile will be created. 
+#' @param path Folder to put the downloaded data in. If missing a tempfile will
+#'   be created. If specified the downloaded file will be named 'jobs03.xls'.
 #'
 #' @return The file path and name of the downloaded file.
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' jobs03 <- acquire_jobs03()
+#' 
+#' file <- acquire_jobs03("~/downloads")
+#' }
 acquire_jobs03 <- function(path){
   
     if (!missing(path)) {
@@ -35,12 +41,18 @@ acquire_jobs03 <- function(path){
 
 #' Download ONS Consumer Trends dataset
 #'
-#' @param path Folder to put the downloaded data in. If missing a tempfile will be created.
+#' @param path Folder to put the downloaded data in. If missing a tempfile will
+#'   be created. If specified the downloaded file will be named 'ct.csv'.
 #'
 #' @return The file path and name of the downloaded file.
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' jobs03 <- acquire_ct()
+#' 
+#' file <- acquire_ct("~/downloads")
+#' }
 acquire_ct <- function(path){
   
   if (!missing(path)) {
@@ -69,12 +81,19 @@ acquire_ct <- function(path){
 
 #' Download Defra Agricultural Workforce dataset
 #'
-#' @param path Folder to put the downloaded data in. If missing a tempfile will be created.
+#' @param path Folder to put the downloaded data in. If missing a tempfile will
+#'   be created. If specified the downloaded file will be named
+#'   'ag_workforce.ods'.
 #'
 #' @return The file path and name of the downloaded file.
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' jobs03 <- acquire_ag_workforce()
+#' 
+#' file <- acquire_ag_workforce("~/downloads")
+#' }
 acquire_ag_workforce <- function(path) {
   
   if (!missing(path)) {

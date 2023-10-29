@@ -15,7 +15,7 @@ library(fsp)
 
 ## Workflow
 
-```{r}
+```{r workflow, warning=FALSE}
 lvls <- c("Agriculture",
           "Fishing",
           "Manufacturing",

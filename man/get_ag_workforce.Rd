@@ -7,11 +7,23 @@
 get_ag_workforce(file)
 }
 \arguments{
-\item{file}{A spreadsheet in ods format. If omitted, will be downloaded.}
+\item{file}{A spreadsheet in ods format. If omitted, will be downloaded using
+\code{\link[=acquire_ag_workforce]{acquire_ag_workforce()}}.}
 }
 \value{
 A tibble of workforce data
 }
 \description{
 Extract data from an Agricultural workforce ods file
+}
+\examples{
+\dontrun{
+# download and extract in one go
+ag <- get_ag_workforce()
+
+# or download separately and extract 
+ag <- acquire_ag_workforce()
+data <- get_ag_workforce(ag)
+
+}
 }

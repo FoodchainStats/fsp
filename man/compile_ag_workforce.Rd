@@ -12,3 +12,8 @@ A dataframe of quarterly data
 \description{
 Compile GB Agricultural workforce data
 }
+\examples{
+\dontrun{
+data <- compile_ag_workforce()
+}
+}

@@ -7,11 +7,19 @@
 acquire_ct(path)
 }
 \arguments{
-\item{path}{Folder to put the downloaded data in. If missing a tempfile will be created.}
+\item{path}{Folder to put the downloaded data in. If missing a tempfile will
+be created. If specified the downloaded file will be named 'ct.csv'.}
 }
 \value{
 The file path and name of the downloaded file.
 }
 \description{
 Download ONS Consumer Trends dataset
+}
+\examples{
+\dontrun{
+jobs03 <- acquire_ct()
+
+file <- acquire_ct("~/downloads")
+}
 }

@@ -1,12 +1,21 @@
 #' Extract data from a JOBS03 xls file
 #'
 #' @param file A JOBS03 xls file. If omitted, file will be downloaded
-#' @param sheet Spreadsheet tab name or number
+#' @param sheet Spreadsheet tab name or number. 
+#' 
 #'
-#' @return
+#' @return A dataframe of employment data
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' # dowload in one go
+#' data <- get_jobs03_data()
+#' 
+#' # or download first
+#' jobs <- acquire_jobs03()
+#' data <- get_jobs03_data(jobs)
+#' }
 get_jobs03_data <- function(file, sheet = "8. GB Totals"){
   
   if(missing(file)) {

@@ -7,11 +7,19 @@
 acquire_jobs03(path)
 }
 \arguments{
-\item{path}{Folder to put the downloaded data in. If missing a tempfile will be created.}
+\item{path}{Folder to put the downloaded data in. If missing a tempfile will
+be created. If specified the downloaded file will be named 'jobs03.xls'.}
 }
 \value{
 The file path and name of the downloaded file.
 }
 \description{
 Download ONS JOBS03 dataset
+}
+\examples{
+\dontrun{
+jobs03 <- acquire_jobs03()
+
+file <- acquire_jobs03("~/downloads")
+}
 }

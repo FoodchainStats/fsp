@@ -4,6 +4,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data <- compile_ag_workforce()
+#' }
 compile_ag_workforce <- function() {
 
 w <- acquire_ag_workforce()

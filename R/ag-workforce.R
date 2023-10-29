@@ -1,11 +1,21 @@
 #' Extract data from an Agricultural workforce ods file
 #'
-#' @param file A spreadsheet in ods format. If omitted, will be downloaded.
+#' @param file A spreadsheet in ods format. If omitted, will be downloaded using
+#'   [acquire_ag_workforce()].
 #'
 #' @return A tibble of workforce data
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' # download and extract in one go
+#' ag <- get_ag_workforce()
+#' 
+#' # or download separately and extract 
+#' ag <- acquire_ag_workforce()
+#' data <- get_ag_workforce(ag)
+#' 
+#' }
 get_ag_workforce <- function(file) {
   
   if(missing(file)) {
