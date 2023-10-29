@@ -1,0 +1,55 @@
+---
+title: "Agri-food chain employment"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fsp)
+```
+
+## Workflow
+
+```{r}
+lvls <- c("Agriculture",
+          "Fishing",
+          "Manufacturing",
+          "Wholesale",
+          "Retail",
+          "Catering")
+
+ag_gb <- fsp::compile_ag()
+
+food <- fsp::jobs03_sectors() |> 
+  dplyr::left_join(fsp::get_jobs03_data()) |> 
+  dplyr::group_by(sector, date) |> 
+  dplyr::summarise(value = sum(value)) |> 
+  dplyr::bind_rows(ag_gb) |> 
+  dplyr::mutate(sector = forcats::fct(sector, levels = lvls))
+
+
+
+food |> 
+  dplyr::filter(date >= "2020-01-01") |> 
+  ggplot2::ggplot() +
+  ggplot2::geom_point(ggplot2::aes(x = date, y = value, colour = sector)) +
+  ggplot2::geom_line(ggplot2::aes(x = date, y = value, colour = sector))
+
+
+food |>
+  dplyr::group_by(sector) |>
+  dplyr::slice_max(date, n = 5) |> 
+  dplyr::arrange(sector, date) |> 
+  dplyr::mutate(yoy_pct_change = (value/dplyr::lag(value, 4) - 1)*100) |> 
+  dplyr::slice_max(date) |> 
+  knitr::kable()
+  
+
+
+```
+

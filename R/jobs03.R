@@ -26,13 +26,15 @@ get_jobs03_data <- function(file, sheet = "8. GB Totals"){
                "If your file does contain a valid JOBS03 tab, please specify the sheet name or number."))
   }
   
-  data <- readxl::read_excel(jobs03, 
+  data <- suppressMessages(
+          readxl::read_excel(jobs03, 
                              sheet = "8. GB Totals",
                              skip = 2,
                              col_types = c("text")) 
-  
+                            )  
+                           
   out <- data|> 
-    dplyr::mutate(date = jobs03_date(.data$`...1`)) |> 
+    dplyr::mutate(date = jobs03_date(.data$`...1`)) |>
     dplyr::select(-.data$`...1`, -.data$`...2`) |> 
     dplyr::relocate(date) |> 
     unpivotr::as_cells() |> 
@@ -50,6 +52,8 @@ get_jobs03_data <- function(file, sheet = "8. GB Totals"){
                   sic_division = dplyr::case_when(
                     stringr::str_length(.data$sic_division) >10 ~ 
                     sprintf("%.*f", 2, as.numeric(.data$sic_division)),
+                    .data$sic_section == "G-T" ~ "45-98",
+                    .data$sic_section == "A-T" ~ "01-98",
                                        .default = .data$sic_division
                     )
                   )
