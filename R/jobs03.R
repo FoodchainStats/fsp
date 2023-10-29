@@ -26,38 +26,43 @@ get_jobs03_data <- function(file, sheet = "8. GB Totals"){
                "If your file does contain a valid JOBS03 tab, please specify the sheet name or number."))
   }
   
+  message("Reading JOBS03")
+  
   data <- suppressMessages(
           readxl::read_excel(jobs03, 
                              sheet = "8. GB Totals",
                              skip = 2,
                              col_types = c("text")) 
                             )  
-                           
+# the unvectorised jobs03_date2 function is much slower but doesnt throw
+# warnings, whereas jobs03_date does. So I switched it out. See helpers-jobs03.R
+# for function details.
   out <- data|> 
-    dplyr::mutate(date = jobs03_date(.data$`...1`)) |>
-    dplyr::select(-.data$`...1`, -.data$`...2`) |> 
-    dplyr::relocate(date) |> 
+    dplyr::select(-"...2") |> 
     unpivotr::as_cells() |> 
-    unpivotr::behead("left", date) |> 
+    unpivotr::behead("left", "date") |> 
     unpivotr::behead("up", "industry") |> 
     unpivotr::behead("up-left", "sic_section") |> 
     unpivotr::behead("up", "sic_division") |> 
-    dplyr::select(date = .data$date.header, 
-                  .data$sic_section, 
-                  .data$sic_division, 
-                  .data$industry, 
-                  value = .data$chr) |> 
-    dplyr::filter(!is.na(date)) |> 
+    dplyr::select("date", 
+                  "sic_section", 
+                  "sic_division", 
+                  "industry", 
+                  value = "chr") |> 
+    dplyr::filter(!is.na(date), stringr::str_length(date) < 15) |> 
+    dplyr::mutate(date = purrr::map_chr(.data$date, jobs03_date2, .progress = TRUE)) |>
+    dplyr::mutate(date = as.Date(.data$date)) |> 
+    # dplyr::mutate(date = jobs03_date(.data$date)) |>
     dplyr::mutate(value = as.numeric(.data$value),
                   sic_division = dplyr::case_when(
                     stringr::str_length(.data$sic_division) >10 ~ 
-                    sprintf("%.*f", 2, as.numeric(.data$sic_division)),
+                      sprintf("%.*f", 2, as.numeric(.data$sic_division)),
                     .data$sic_section == "G-T" ~ "45-98",
                     .data$sic_section == "A-T" ~ "01-98",
-                                       .default = .data$sic_division
-                    )
+                    .default = .data$sic_division
                   )
-
+    )
+  
   return(out)
   
 }

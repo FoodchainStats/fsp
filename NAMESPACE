@@ -3,7 +3,7 @@
 export(acquire_ag_workforce)
 export(acquire_ct)
 export(acquire_jobs03)
-export(compile_ag)
+export(compile_ag_workforce)
 export(get_ag_workforce)
 export(get_jobs03_data)
 export(jobs03_sectors)

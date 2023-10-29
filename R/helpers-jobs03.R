@@ -5,7 +5,7 @@ jobs03_date <- function(string){
   out <- dplyr::case_when(
     stringr::str_starts(string, "[0-9][0-9][0-9][0-9][0-9]") == TRUE ~ as.character(as.Date(as.numeric(string), origin = "1899-12-30")),
     stringr::str_starts(string, "[A-Z][a-z][a-z] [0-9][0-9]") == TRUE ~ as.character(lubridate::my(stringr::str_sub(string, 1, 6))),
-    .default = ""
+    .default = NA
   )
   
   out <- as.Date(out)

@@ -68,7 +68,7 @@ lvls <- c("Agriculture",
           "Retail",
           "Catering")
 
-ag_gb <- fsp::compile_ag()
+ag_gb <- fsp::compile_ag_workforce()
 
 food <- fsp::jobs03_sectors() |> 
   dplyr::left_join(fsp::get_jobs03_data()) |> 

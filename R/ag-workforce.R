@@ -12,8 +12,10 @@ get_ag_workforce <- function(file) {
     file <- acquire_ag_workforce()
   } 
 
-  file <- readODS::read_ods(file, sheet = "Ag_workforce_by_country", col_names = FALSE)
-    
+  file <- suppressMessages(
+    readODS::read_ods(file, sheet = "Ag_workforce_by_country", col_names = FALSE)
+  )
+  
   cells <- unpivotr::as_cells(file) |> 
     dplyr::filter(dplyr::between(row, 2, 18)) |> 
     # dplyr::select(row, col, data_type, numeric, character, date) |> 
