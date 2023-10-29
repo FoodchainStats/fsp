@@ -57,7 +57,8 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>file</dt>
-<dd><p>A spreadsheet in ods format. If omitted, will be downloaded.</p></dd>
+<dd><p>A spreadsheet in ods format. If omitted, will be downloaded using
+<code><a href="acquire_ag_workforce.html">acquire_ag_workforce()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -67,6 +68,19 @@
 <p>A tibble of workforce data</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># download and extract in one go</span></span></span>
+<span class="r-in"><span><span class="va">ag</span> <span class="op">&lt;-</span> <span class="fu">get_ag_workforce</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># or download separately and extract </span></span></span>
+<span class="r-in"><span><span class="va">ag</span> <span class="op">&lt;-</span> <span class="fu"><a href="acquire_ag_workforce.html">acquire_ag_workforce</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">get_ag_workforce</span><span class="op">(</span><span class="va">ag</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
