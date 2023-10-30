@@ -15,7 +15,9 @@ library(fsp)
 
 ## Workflow
 
-```{r workflow, warning=FALSE}
+The first step is to acquire the raw data.
+
+```{r raw-data, warning=FALSE}
 lvls <- c("Agriculture",
           "Fishing",
           "Manufacturing",
@@ -32,14 +34,20 @@ food <- fsp::jobs03_sectors() |>
   dplyr::bind_rows(ag_gb) |> 
   dplyr::mutate(sector = forcats::fct(sector, levels = lvls))
 
-
-
 food |> 
-  dplyr::filter(date >= "2020-01-01") |> 
-  ggplot2::ggplot() +
-  ggplot2::geom_point(ggplot2::aes(x = date, y = value, colour = sector)) +
-  ggplot2::geom_line(ggplot2::aes(x = date, y = value, colour = sector))
+  dplyr::arrange(desc(date)) |> 
+  head() |> 
+  knitr::kable()
 
+```
+
+Since the agricultural workforce data is annual, and the JOBS03 data is
+quarterly, the latest year may not include figures for agriculture. Lets get
+some yearly averages, and we will calculate some percentage changes in case they
+come in useful.
+
+
+```{r}
 
 food |>
   dplyr::group_by(sector) |>
@@ -49,6 +57,15 @@ food |>
   dplyr::slice_max(date) |> 
   knitr::kable()
   
+food |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(year = lubridate::year(date)) |> 
+  dplyr::summarise(value = mean(value), .by = c(sector, year)) |> 
+  dplyr::group_by(sector) |> 
+  dplyr::mutate(yoy_pct_change = round((value/dplyr::lag(value) - 1)*100, 2)) |> 
+  dplyr::group_by(year) |> 
+  dplyr::mutate(pct_of_tot = round(value/sum(value) * 100, 2)) |> 
+  dplyr::filter(year == 2022)
 
 
 ```
