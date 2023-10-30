@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(fsp)
+
 ```
 
 ## Workflow
@@ -18,6 +18,9 @@ library(fsp)
 The first step is to acquire the raw data.
 
 ```{r raw-data, warning=FALSE}
+
+library(fsp)
+
 lvls <- c("Agriculture",
           "Fishing",
           "Manufacturing",
@@ -26,9 +29,10 @@ lvls <- c("Agriculture",
           "Catering")
 
 ag_gb <- fsp::compile_ag_workforce()
+jobs03 <- fsp::get_jobs03_data()
 
 food <- fsp::jobs03_sectors() |> 
-  dplyr::left_join(fsp::get_jobs03_data()) |> 
+  dplyr::left_join(jobs03, by = dplyr::join_by(sic_division)) |> 
   dplyr::group_by(sector, date) |> 
   dplyr::summarise(value = sum(value)) |> 
   dplyr::bind_rows(ag_gb) |> 
@@ -49,23 +53,28 @@ come in useful.
 
 ```{r}
 
-food |>
-  dplyr::group_by(sector) |>
-  dplyr::slice_max(date, n = 5) |> 
-  dplyr::arrange(sector, date) |> 
-  dplyr::mutate(yoy_pct_change = (value/dplyr::lag(value, 4) - 1)*100) |> 
-  dplyr::slice_max(date) |> 
-  knitr::kable()
-  
-food |> 
-  dplyr::ungroup() |> 
+fsp_food <- food |> 
   dplyr::mutate(year = lubridate::year(date)) |> 
-  dplyr::summarise(value = mean(value), .by = c(sector, year)) |> 
+  dplyr::group_by(sector, year) |> 
+  dplyr::summarise(value = mean(value)) |> 
   dplyr::group_by(sector) |> 
   dplyr::mutate(yoy_pct_change = round((value/dplyr::lag(value) - 1)*100, 2)) |> 
   dplyr::group_by(year) |> 
   dplyr::mutate(pct_of_tot = round(value/sum(value) * 100, 2)) |> 
   dplyr::filter(year == 2022)
+
+fsp_food |> knitr::kable()
+
+
+```
+
+```{r}
+
+fsp_food |> 
+  dplyr::summarise(dplyr::across(where(is.factor), ~'Total'),
+                   dplyr::across(where(is.numeric), sum),
+                   )
+  
 
 
 ```
