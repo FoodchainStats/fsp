@@ -60,21 +60,29 @@ fsp_food <- food |>
   dplyr::group_by(sector) |> 
   dplyr::mutate(yoy_pct_change = round((value/dplyr::lag(value) - 1)*100, 2)) |> 
   dplyr::group_by(year) |> 
-  dplyr::mutate(pct_of_tot = round(value/sum(value) * 100, 2)) |> 
-  dplyr::filter(year == 2022)
+  dplyr::mutate(pct_of_tot = round(value/sum(value) * 100, 2)) 
 
-fsp_food |> knitr::kable()
+fsp_food |> 
+  dplyr::filter(year == 2022) |>
+  knitr::kable()
 
 
 ```
 
 ```{r}
 
-fsp_food |> 
-  dplyr::summarise(dplyr::across(where(is.factor), ~'Total'),
-                   dplyr::across(where(is.numeric), sum),
-                   )
-  
+x <- fsp_food |> 
+dplyr::mutate(total = "Total Agri-Food",
+              food_chain = dplyr::case_when(sector != "Agriculture" ~ "Total Food"),
+              ag_fish = dplyr::case_when(sector %in% c("Agriculture", "Fishing") ~ "Agriculture (including fishing)")) 
+
+
+x |> 
+  dplyr::filter(year == 2022) |> 
+  dplyr::group_by(ag_fish) |> 
+  # dplyr::select(sector, value) |> 
+  dplyr::summarise(tot = sum(value))
+
 
 
 ```
