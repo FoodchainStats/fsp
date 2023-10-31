@@ -7,6 +7,9 @@
     <loc>https://foodchainstats.github.io/fsp/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://foodchainstats.github.io/fsp/articles/ct.html</loc>
+  </url>
+  <url>
     <loc>https://foodchainstats.github.io/fsp/articles/fsp.html</loc>
   </url>
   <url>
@@ -38,6 +41,15 @@
   </url>
   <url>
     <loc>https://foodchainstats.github.io/fsp/reference/get_ag_workforce.html</loc>
+  </url>
+  <url>
+    <loc>https://foodchainstats.github.io/fsp/reference/get_ct_metadata.html</loc>
+  </url>
+  <url>
+    <loc>https://foodchainstats.github.io/fsp/reference/get_ct_quarter.html</loc>
+  </url>
+  <url>
+    <loc>https://foodchainstats.github.io/fsp/reference/get_ct_year.html</loc>
   </url>
   <url>
     <loc>https://foodchainstats.github.io/fsp/reference/get_jobs03_data.html</loc>
