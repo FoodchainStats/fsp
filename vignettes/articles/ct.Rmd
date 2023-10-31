@@ -39,7 +39,9 @@ data <- ct_metadata |>
 data |> 
   dplyr::filter(date >= "2002-01-01") |>
   ggplot2::ggplot() +
-  ggplot2::geom_line(ggplot2::aes(x = date, y = value, colour = series))
+  ggplot2::geom_line(ggplot2::aes(x = date, y = value, colour = series)) +
+  ggplot2::scale_y_continuous(labels = scales::label_comma(scale = 0.001),) +
+  ggplot2::theme(legend.position = "bottom")
 
 
 ```
