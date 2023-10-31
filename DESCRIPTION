@@ -11,6 +11,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
     dplyr,
+    fsp (>= 0.0.0.9000),
     ggplot2,
     janitor,
     lubridate,
@@ -29,3 +30,5 @@ Config/Needs/website: rmarkdown
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Remotes:  
+    github::FoodchainStats/mm23
