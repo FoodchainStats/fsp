@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 
 ```
 
-## Workflow
+## Acquire data
 
 The first step is to acquire the raw data.
 
@@ -45,6 +45,8 @@ food |>
 
 ```
 
+## Wrangle
+
 Since the agricultural workforce data is annual, and the JOBS03 data is
 quarterly, the latest year may not include figures for agriculture. Lets get
 some yearly averages, and we will calculate some percentage changes in case they
@@ -68,6 +70,9 @@ fsp_food |>
 
 
 ```
+
+
+## Prepare for publication
 
 Now we have got the numbers, its just a case of wrangling them into a table in a
 suitable form for converting to govspeak and publication. This code feels clunky

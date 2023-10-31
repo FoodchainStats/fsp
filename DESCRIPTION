@@ -12,9 +12,11 @@ RoxygenNote: 7.2.3
 Imports: 
     dplyr,
     ggplot2,
+    janitor,
     lubridate,
     purrr,
     readODS,
+    readr,
     readxl,
     rlang,
     rvest,

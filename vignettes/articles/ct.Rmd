@@ -1,0 +1,46 @@
+---
+title: "Consumer Expenditure"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fsp)
+```
+
+## Acquire and plot data
+
+Data source is [ONS Consumer Trends](https://www.ons.gov.uk/economy/nationalaccounts/satelliteaccounts/bulletins/consumertrends/previousReleases) data.
+
+```{r}
+
+ct <- acquire_ct()
+ct_metadata <- get_ct_metadata(ct)
+ct_year <- get_ct_year(ct)
+
+
+cdids <- c("ABZV", "ADFM", "ADXO", "ADXP")
+
+
+data <- ct_metadata |> 
+  dplyr::filter(cdid %in% cdids) |> 
+  dplyr::left_join(ct_year) |> 
+  dplyr::mutate(series = dplyr::case_when(cdid == "ABZV" ~ "Household food and non-alcoholic beverages",
+                                          cdid == "ADFM" ~ "Alcoholic drinks (off licence only)",
+                                          cdid %in% c("ADXO", "ADXP") ~ "Catering")) |> 
+  dplyr::group_by(series, date) |> 
+  dplyr::summarise(value = sum(value))
+
+data |> 
+  dplyr::filter(date >= "2002-01-01") |>
+  ggplot2::ggplot() +
+  ggplot2::geom_line(ggplot2::aes(x = date, y = value, colour = series))
+
+
+```
+
