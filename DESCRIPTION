@@ -2,9 +2,9 @@ Package: fsp
 Title: Utilities for the Food Statistics Pocketbook
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("David", "Lee", , "david.lee@defra.gov.uk", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Experimental functions to assist with producing the Pocketbook.
 License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

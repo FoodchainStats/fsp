@@ -16,5 +16,16 @@ library(fsp)
 ## What this is supposed to be
 
 The idea is to collate a set of functions and instructions for updating the
-pocketbook [usethis::use_article()] to make guidance for each item in the
-publication.
+pocketbook in articles [usethis::use_article()] to make guidance for producing
+items in the publication.
+
+## Installation
+
+You can install the development version of fsp from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("FoodchainStats/fsp")
+```
+

@@ -69,6 +69,11 @@ fsp_food |>
 
 ```
 
+Now we have got the numbers, its just a case of wrangling them into a table in a
+suitable form for converting to govspeak and publication. This code feels clunky
+and inelegant, but it works.
+
+
 ```{r govspeak, results='asis'}
 
 x <- fsp_food |> 
