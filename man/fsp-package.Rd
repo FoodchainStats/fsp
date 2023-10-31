@@ -6,7 +6,7 @@
 \alias{fsp-package}
 \title{fsp: Utilities for the Food Statistics Pocketbook}
 \description{
-What the package does (one paragraph).
+Experimental functions to assist with producing the Pocketbook.
 }
 \seealso{
 Useful links:
@@ -16,7 +16,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: David Lee \email{david.lee@defra.gov.uk} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
 
 }
 \keyword{internal}
