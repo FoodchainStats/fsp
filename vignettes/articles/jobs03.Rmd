@@ -69,7 +69,7 @@ fsp_food |>
 
 ```
 
-```{r}
+```{r govspeak, results='asis'}
 
 x <- fsp_food |> 
 dplyr::mutate(total = "Total Agri-Food",
@@ -77,13 +77,44 @@ dplyr::mutate(total = "Total Agri-Food",
               ag_fish = dplyr::case_when(sector %in% c("Agriculture", "Fishing") ~ "Agriculture (including fishing)")) 
 
 
-x |> 
+a <- x |> 
   dplyr::filter(year == 2022) |> 
   dplyr::group_by(ag_fish) |> 
-  # dplyr::select(sector, value) |> 
-  dplyr::summarise(tot = sum(value))
+  dplyr::summarise(value = sum(value)) |> 
+  dplyr::filter(!is.na(ag_fish)) |> 
+  dplyr::rename(sector = ag_fish)
+
+b <- x |> 
+  dplyr::filter(year == 2022) |> 
+  dplyr::group_by(sector) |> 
+  dplyr::summarise(value = sum(value)) |> 
+  dplyr::filter(sector %in% c("Manufacturing", "Wholesale", "Retail", "Catering"))
 
 
+c <- x |> 
+  dplyr::filter(year == 2022) |> 
+  dplyr::group_by(food_chain) |> 
+  dplyr::summarise(value = sum(value)) |> 
+  dplyr::filter(!is.na(food_chain)) |> 
+  dplyr::rename(sector = food_chain)
+
+d <- x |> 
+  dplyr::filter(year == 2022) |> 
+  dplyr::group_by(total) |> 
+  dplyr::summarise(value = sum(value)) |> 
+  dplyr::filter(!is.na(total)) |> 
+  dplyr::rename(sector = total)
+
+table <- dplyr::bind_rows(a, b, c, d) |> 
+  dplyr::mutate(sector = dplyr::case_when(sector == "Manufacturing" ~ "Food and Drink Manufacturing",
+                                          sector == "Wholesale" ~ "Food and Drink Wholesaling",
+                                          sector == "Retail" ~ "Food and Drink Retailing",
+                                          sector == "Catering" ~ "Food and Drink Non-Residential Catering",
+                                          .default = sector),
+                value = round(value/1000, 2)) |> 
+  dplyr::select(Sector = sector, `Employees (millions)` = value)
+
+table |> knitr::kable()
 
 ```
 
