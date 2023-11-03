@@ -34,6 +34,9 @@
     <loc>https://foodchainstats.github.io/fsp/reference/acquire_jobs03.html</loc>
   </url>
   <url>
+    <loc>https://foodchainstats.github.io/fsp/reference/acquire_unctad.html</loc>
+  </url>
+  <url>
     <loc>https://foodchainstats.github.io/fsp/reference/compile_ag_workforce.html</loc>
   </url>
   <url>
@@ -68,5 +71,8 @@
   </url>
   <url>
     <loc>https://foodchainstats.github.io/fsp/reference/url_jobs03.html</loc>
+  </url>
+  <url>
+    <loc>https://foodchainstats.github.io/fsp/reference/url_unctad.html</loc>
   </url>
 </urlset>
