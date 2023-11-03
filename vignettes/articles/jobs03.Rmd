@@ -60,13 +60,13 @@ fsp_food <- food |>
   dplyr::group_by(sector, year) |> 
   dplyr::summarise(value = mean(value)) |> 
   dplyr::group_by(sector) |> 
-  dplyr::mutate(yoy_pct_change = round((value/dplyr::lag(value) - 1)*100, 2)) |> 
+  dplyr::mutate(yoy_pct_change = scales::label_percent(accuracy = 0.1) (value/dplyr::lag(value) - 1)) |> 
   dplyr::group_by(year) |> 
-  dplyr::mutate(pct_of_tot = round(value/sum(value) * 100, 2)) 
+  dplyr::mutate(pct_of_tot = scales::label_percent(accuracy = 0.1) (value/sum(value))) 
 
 fsp_food |> 
   dplyr::filter(year == 2022) |>
-  knitr::kable()
+  knitr::kable(digits = 2)
 
 
 ```
@@ -79,7 +79,7 @@ suitable form for converting to govspeak and publication. This code feels clunky
 and inelegant, but it works.
 
 
-```{r govspeak, results='asis'}
+```{r govspeak, results='markup'}
 
 x <- fsp_food |> 
 dplyr::mutate(total = "Total Agri-Food",
@@ -121,10 +121,12 @@ table <- dplyr::bind_rows(a, b, c, d) |>
                                           sector == "Retail" ~ "Food and Drink Retailing",
                                           sector == "Catering" ~ "Food and Drink Non-Residential Catering",
                                           .default = sector),
-                value = round(value/1000, 2)) |> 
+                value = value/1000) |> 
   dplyr::select(Sector = sector, `Employees (millions)` = value)
 
-table |> knitr::kable()
+table |> knitr::kable(digits = 3)
+
+table |> knitr::kable(digits = 3, format = "pipe")
 
 ```
 

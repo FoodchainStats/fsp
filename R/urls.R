@@ -52,3 +52,32 @@ url_ag_workforce <- function() {
   url <- "https://www.gov.uk/government/statistical-data-sets/agricultural-workforce-in-the-united-kingdom-at-1-june"
   return(url)
 }
+
+
+
+
+#' URL for UNCTAD commodity price indices data
+#'
+#' @return the url for commodity price indices
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url_unctad()
+#' }
+url_unctad <- function() {
+  
+  url <- "https://unctadstat.unctad.org/EN/BulkDownload.html"
+  
+  html <- rvest::read_html(url)
+  
+  links <- html |> rvest::html_elements("a")
+  linktext <- links |> rvest::html_text2()
+  linkurls <- links |> rvest::html_attr("href")
+  datalink <- which(stringr::str_detect(linktext, "Free market commodity prices indices, monthly"))
+  filename <- linkurls[datalink]
+  
+  file <- paste0("https://unctadstat.unctad.org", filename)
+  return(file)
+  
+}

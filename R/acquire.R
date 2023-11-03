@@ -122,3 +122,46 @@ acquire_ag_workforce <- function(path) {
   
   return(ag_workforce_file)
 }
+
+
+
+
+#' Download UNCTAD Commodity Price indices
+#'
+#' @param path Folder to put the downloaded data in. If missing a tempfile will
+#'   be created. If specified the downloaded file will be named
+#'   'commodityprices.csv'.
+#'
+#' @return The file path and name of the downloaded file.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' unctad <- acquire_unctad()
+#' 
+#' file <- acquire_unctad("~/downloads")
+#' }
+acquire_unctad <- function(path) {
+  
+  if (!missing(path)) {
+    if (!dir.exists(path)) 
+      stop(paste(path, "does not exist"))
+  }
+  
+  url <- url_unctad()
+  
+  tmp1 <- tempfile()
+  tmpd <- tempfile()
+  utils::download.file(url, tmp1)
+  archive::archive_extract(tmp1, tmpd)
+  unctadfile <- list.files(tmpd, full.names = TRUE)
+  
+  
+  if (!missing(path)) {
+    file.copy(unctadfile, to = paste0(path, "/", "commodityprices.csv"))
+    unctadfile <- paste0(path, "/", "commodityprices.csv")
+  }
+  
+  return(unctadfile)
+  
+}
