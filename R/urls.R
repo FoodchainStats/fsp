@@ -74,7 +74,7 @@ url_unctad <- function() {
   links <- html |> rvest::html_elements("a")
   linktext <- links |> rvest::html_text2()
   linkurls <- links |> rvest::html_attr("href")
-  datalink <- which(stringr::str_detect(linktext, "Free market commodity prices indices, monthly"))
+  datalink <- which(stringr::str_detect(linktext, "Free market commodity prices, monthly"))
   filename <- linkurls[datalink]
   
   file <- paste0("https://unctadstat.unctad.org", filename)

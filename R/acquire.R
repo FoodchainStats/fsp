@@ -127,6 +127,9 @@ acquire_ag_workforce <- function(path) {
 
 
 #' Download UNCTAD Commodity Price indices
+#' 
+#' Internally uses the `archive` library which requires libarchive-dev to be
+#' installed on Ubuntu machines
 #'
 #' @param path Folder to put the downloaded data in. If missing a tempfile will
 #'   be created. If specified the downloaded file will be named

@@ -15,7 +15,8 @@ be created. If specified the downloaded file will be named
 The file path and name of the downloaded file.
 }
 \description{
-Download UNCTAD Commodity Price indices
+Internally uses the \code{archive} library which requires libarchive-dev to be
+installed on Ubuntu machines
 }
 \examples{
 \dontrun{

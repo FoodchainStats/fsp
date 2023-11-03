@@ -124,9 +124,7 @@ table <- dplyr::bind_rows(a, b, c, d) |>
                 value = value/1000) |> 
   dplyr::select(Sector = sector, `Employees (millions)` = value)
 
-table |> knitr::kable(digits = 3)
-
-table |> knitr::kable(digits = 3, format = "pipe")
+table |> knitr::kable(digits = 3,format = "pipe")
 
 ```
 
