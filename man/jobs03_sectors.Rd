@@ -7,10 +7,13 @@
 jobs03_sectors()
 }
 \value{
-A tibble of SIC codes and sectors
+A tibble of SIC codes and sectors.
 }
 \description{
-Dataset of JOBS03 SIC codes and food chain sectors
+The 'official' SIC definition of the food chain that Defra uses is described
+in the \href{https://www.gov.uk/government/statistics/food-statistics-pocketbook/food-statistics-in-your-pocket#glossary}{pocketbook glossary}.
+This dataset uses the SIC codes included in JOBS03. It is useful to join
+against raw JOBS03 data to extract food sectors of innterest.
 }
 \examples{
 jobs03_sectors()

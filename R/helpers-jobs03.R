@@ -40,8 +40,14 @@ jobs03_date2 <- function(string) {
 }
 
 #' Dataset of JOBS03 SIC codes and food chain sectors
+#' 
+#' The 'official' SIC definition of the food chain that Defra uses is described
+#' in the [pocketbook
+#' glossary](https://www.gov.uk/government/statistics/food-statistics-pocketbook/food-statistics-in-your-pocket#glossary).
+#' This dataset uses the SIC codes included in JOBS03. It is useful to join
+#' against raw JOBS03 data to extract food sectors of innterest.
 #'
-#' @return A tibble of SIC codes and sectors
+#' @return A tibble of SIC codes and sectors.
 #' @export
 #'
 #' @examples
