@@ -74,22 +74,43 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://foodchainstats.github.io/fsp/">fsp</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
-<h2 id="what-this-is-supposed-to-be">What this is supposed to be<a class="anchor" aria-label="anchor" href="#what-this-is-supposed-to-be"></a>
+<h2 id="what-this-package-is-supposed-to-be">What this package is supposed to be<a class="anchor" aria-label="anchor" href="#what-this-package-is-supposed-to-be"></a>
 </h2>
-<p>The idea is to collate a set of functions and instructions for
-updating the pocketbook in articles [usethis::use_article()] to make
-guidance for producing items in the publication.</p>
+<p>The idea is to collate a set of functions to assist with updating
+sections of the pocketbook, together with examples of using them in the
+articles on this site to make guidance for producing items in the
+publication.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version of fsp from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"FoodchainStats/fsp"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<p>There are several broad categories of functions, generally aimed at
+helping to access datasets that underlie pocketbook content, and wrangle
+it into useful shape.</p>
+<p><code>url_*</code> functions simply store the address of where the
+datasets are. They are used by other fsp functions to download data. If
+things arent working the first thing you can do is manually check these
+url to see that they are pointing to the right data.</p>
+<p><code>acquire_*</code> functions actually download data. By default
+they download into a temporary file, but you can specify a folder to
+download to. These functions return the path to the downloaded file. You
+can use the output of <code>acquire_*</code> functions with, eg
+<code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> or other similar functions. Alternatively…</p>
+<p><code>get_*</code> functions wrap around <code>url</code> and
+<code>acquire</code>, reading in data and returning a tibble. In most
+cases they also do a bit of light processing, eg cleaning up variable
+names. For some source datasets they may return an element of the
+underlying data, such as only the monthly or yearly data, or metadata
+about the dataset contents.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
