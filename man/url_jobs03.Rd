@@ -10,7 +10,8 @@ url_jobs03()
 The url for JOBS03.
 }
 \description{
-URL for the current JOBS03 dataset
+Scrapes the filename of the latest dataset from
+\href{https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/employeejobsbyindustryjobs03}{JOBS03}
 }
 \examples{
 \dontrun{

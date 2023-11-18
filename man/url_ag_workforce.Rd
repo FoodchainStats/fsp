@@ -12,7 +12,8 @@ The url for the landing page that contains the dataset.
 extract thte actual data file.
 }
 \description{
-URL for Defra Agricultural Workforce data
+Scrapes the filename of the latest data from the Defra \href{https://www.gov.uk/government/statistical-data-sets/agricultural-workforce-in-the-united-kingdom-at-1-june}{Agricultural workforce}
+site. The file is an ODS spreadsheet.
 }
 \examples{
 url_ag_workforce()

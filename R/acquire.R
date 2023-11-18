@@ -80,6 +80,8 @@ acquire_ct <- function(path){
 
 
 #' Download Defra Agricultural Workforce dataset
+#' 
+#' The downloaded file will be an ODS spreadsheet.
 #'
 #' @param path Folder to put the downloaded data in. If missing a tempfile will
 #'   be created. If specified the downloaded file will be named
@@ -102,20 +104,20 @@ acquire_ag_workforce <- function(path) {
   }
   
   url <- url_ag_workforce()
-  html <- rvest::read_html(url)
-  links <- html |> rvest::html_elements("a")
-  linktext <- links |> rvest::html_text2()
-  linkurls <- links |> rvest::html_attr("href")
-  datalink <- which(stringr::str_detect(linktext, "Agricultural workforce in the United Kingdom at 1 June"))
-  
-  filename <- linkurls[datalink]
+  # html <- rvest::read_html(url)
+  # links <- html |> rvest::html_elements("a")
+  # linktext <- links |> rvest::html_text2()
+  # linkurls <- links |> rvest::html_attr("href")
+  # datalink <- which(stringr::str_detect(linktext, "Agricultural workforce in the United Kingdom at 1 June"))
+  # 
+  # filename <- linkurls[datalink]
   
   if (missing(path)) {
     tmp <- tempfile()
-    utils::download.file(filename, tmp)
+    utils::download.file(url, tmp)
     ag_workforce_file <- tmp
   } else {
-    utils::download.file(filename, destfile = paste0(path, "/", 
+    utils::download.file(url, destfile = paste0(path, "/", 
                                                 "ag_workforce.ods"))
     ag_workforce_file <- paste0(path, "/", "ag_workforce.ods")
   }
@@ -128,8 +130,9 @@ acquire_ag_workforce <- function(path) {
 
 #' Download UNCTAD Commodity Price indices
 #' 
-#' Internally uses the `archive` library which requires libarchive-dev to be
-#' installed on Ubuntu machines
+#' Bulk UNCTAD data is in 7zip format (see [url_unctad()]). Internally uses the
+#' `archive` library which requires libarchive-dev to be installed on Ubuntu
+#' machines
 #'
 #' @param path Folder to put the downloaded data in. If missing a tempfile will
 #'   be created. If specified the downloaded file will be named

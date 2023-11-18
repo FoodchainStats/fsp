@@ -10,7 +10,8 @@ url_unctad()
 the url for commodity price indices
 }
 \description{
-URL for UNCTAD commodity price indices data
+Scrapes the filename of the latest data from the UNCTAD \href{https://unctadstat.unctad.org/EN/BulkDownload.html}{bulk download} page. The file
+is a 7zip archive file.
 }
 \examples{
 \dontrun{
