@@ -47,7 +47,7 @@
     <div class="section level2">
       <h2 id="by-function-category">By function category<a class="anchor" aria-label="anchor" href="#by-function-category"></a></h2>
       
-      <p class="section-desc"></p><p>In this section the package functions are listed by their operation. If you want to do things step by step you’ll use these to download and then wrangle data before processing the data into pocketbook format. You can view the same functions organised into pocketbook topics in the ‘By topic’ section.</p>
+      <p class="section-desc"></p><p>In this section the package functions are listed by their operation. If you want to do things step by step you’ll use these to download and then wrangle data before processing the data into pocketbook format. Essentially you can use the <code>acquire_*</code> functions to download raw data, and then apply the <code>get_*</code> functions to extract a useful tibble from it for further processing. The <code>url</code> functions are basically for reference and not needed in normal circumstances.</p><p><em>Normally you should just be able to use <code>get_*</code> and carry on from there. The rest is just to show working and help with reproducibility</em></p><p><strong>You can view the same functions organised into pocketbook topics in the ‘By topic’ section.</strong></p>
 
       
     </div><div class="section level2">
@@ -182,7 +182,7 @@
       </dl></div><div class="section level2">
       <h2 id="by-pocketbook-topic">By pocketbook topic<a class="anchor" aria-label="anchor" href="#by-pocketbook-topic"></a></h2>
       
-      
+      <p class="section-desc"></p><p>The same functions as described in the category section, but organised by data source and pocketbook topic</p>
 
       
     </div><div class="section level2">
@@ -198,6 +198,11 @@
 
       <dl><dt>
           
+          <code><a href="acquire_ct.html">acquire_ct()</a></code> 
+        </dt>
+        <dd>Download ONS Consumer Trends dataset</dd>
+      </dl><dl><dt>
+          
           <code><a href="get_ct_metadata.html">get_ct_metadata()</a></code> 
         </dt>
         <dd>Get Consumer Trends metadata</dd>
@@ -211,6 +216,59 @@
           <code><a href="get_ct_year.html">get_ct_year()</a></code> 
         </dt>
         <dd>Get Consumer Trends annual data</dd>
+      </dl><dl><dt>
+          
+          <code><a href="url_ct.html">url_ct()</a></code> 
+        </dt>
+        <dd>URL for the current Consumer Trends dataset</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="employment">Employment<a class="anchor" aria-label="anchor" href="#employment"></a></h3>
+      <p class="section-desc"></p><p>ONS employment stuff</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="url_jobs03.html">url_jobs03()</a></code> 
+        </dt>
+        <dd>URL for the current JOBS03 dataset</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="agricultural-workforce">Agricultural workforce<a class="anchor" aria-label="anchor" href="#agricultural-workforce"></a></h3>
+      <p class="section-desc"></p><p>Defra agri workforce stuff</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="url_ag_workforce.html">url_ag_workforce()</a></code> 
+        </dt>
+        <dd>URL for Defra Agricultural Workforce data</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="commodity-ptices">Commodity ptices<a class="anchor" aria-label="anchor" href="#commodity-ptices"></a></h3>
+      <p class="section-desc"></p><p>UNCTAD commodity prices stuff</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="url_unctad.html">url_unctad()</a></code> 
+        </dt>
+        <dd>URL for UNCTAD commodity price indices data</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
