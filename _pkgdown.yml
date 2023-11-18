@@ -7,8 +7,22 @@ reference:
   desc: >
     In this section the package functions are listed by their operation. If you 
     want to do things step by step you'll use these to download and then wrangle
-    data before processing the data into pocketbook format. You can view the
-    same functions organised into pocketbook topics in the 'By topic' section.
+    data before processing the data into pocketbook format.
+    
+    Essentially you can use the `acquire_*` functions to download raw data, and 
+    then apply the `get_*` functions to extract a useful tibble from it for 
+    further processing. The `url` functions are basically for reference and not 
+    needed in normal circumstances.
+    
+    
+    _Normally you should just be able to use `get_*` and carry on from there. 
+    The rest is just to show working and help with reproducibility_  
+    
+    
+    **You can view the same functions organised into pocketbook topics in the
+    'By topic' section.**
+    
+    
 - subtitle: URLs
   desc: >
     The urls that the package uses to access the data files. `url_*` functions 
@@ -42,10 +56,28 @@ reference:
   - jobs03_sectors
   - compile_ag_workforce
 - title: By pocketbook topic
+  desc: >
+    The same functions as described in the category section, but organised by
+    data source and pocketbook topic
 - subtitle: Consumer Trends
   desc: >
     ONS Consumer Trends stuff
   contents:
   - has_concept("Consumer Trends")
+- subtitle: Employment
+  desc: >
+    ONS employment stuff
+  contents:
+  - has_concept("JOBS03")
+- subtitle: Agricultural workforce
+  desc: >
+    Defra agri workforce stuff
+  contents:
+  - has_concept("Agricultural workforce")
+- subtitle: Commodity ptices
+  desc: >
+    UNCTAD commodity prices stuff
+  contents:
+  - has_concept("UNCTAD")
   
 

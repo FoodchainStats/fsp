@@ -45,6 +45,7 @@ acquire_jobs03 <- function(path){
 #'   be created. If specified the downloaded file will be named 'ct.csv'.
 #'
 #' @return The file path and name of the downloaded file.
+#' @family {Consumer Trends}
 #' @export
 #'
 #' @examples

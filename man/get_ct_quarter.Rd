@@ -22,7 +22,9 @@ get_ct_quarter()
 }
 \seealso{
 Other {Consumer Trends}: 
+\code{\link{acquire_ct}()},
 \code{\link{get_ct_metadata}()},
-\code{\link{get_ct_year}()}
+\code{\link{get_ct_year}()},
+\code{\link{url_ct}()}
 }
 \concept{{Consumer Trends}}

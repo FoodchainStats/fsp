@@ -18,3 +18,4 @@ site. The file is an ODS spreadsheet.
 url_ag_workforce()
 }
 }
+\concept{{Agricultural workforce}}

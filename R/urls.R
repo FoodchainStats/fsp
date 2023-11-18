@@ -4,6 +4,7 @@
 #' [JOBS03](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/employeejobsbyindustryjobs03)
 #'
 #' @return The url for the dataset.
+#' @family {JOBS03}
 #' @export
 #'
 #' @examples
@@ -31,6 +32,7 @@ url_jobs03 <- function() {
 #' URL for the current Consumer Trends dataset
 #'
 #' @return The url for the dataset.
+#' @family {Consumer Trends}
 #' @export
 #'
 #' @examples
@@ -49,6 +51,7 @@ url_ct <- function() {
 #' site. The file is an ODS spreadsheet.
 #'
 #' @return The url for the dataset.
+#' @family {Agricultural workforce}
 #' @export
 #'
 #' @examples
@@ -80,6 +83,7 @@ url_ag_workforce <- function() {
 #'
 #'
 #' @return the url for commodity price indices
+#' @family {UNCTAD}
 #' @export
 #'
 #' @examples

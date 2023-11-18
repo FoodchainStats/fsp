@@ -23,3 +23,11 @@ jobs03 <- acquire_ct()
 file <- acquire_ct("~/downloads")
 }
 }
+\seealso{
+Other {Consumer Trends}: 
+\code{\link{get_ct_metadata}()},
+\code{\link{get_ct_quarter}()},
+\code{\link{get_ct_year}()},
+\code{\link{url_ct}()}
+}
+\concept{{Consumer Trends}}
