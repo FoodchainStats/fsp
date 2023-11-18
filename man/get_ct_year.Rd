@@ -20,3 +20,9 @@ Get Consumer Trends annual data
 egt_ct_year()
 }
 }
+\seealso{
+Other {Consumer Trends}: 
+\code{\link{get_ct_metadata}()},
+\code{\link{get_ct_quarter}()}
+}
+\concept{{Consumer Trends}}

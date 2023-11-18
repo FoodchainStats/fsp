@@ -2,3 +2,50 @@ url: https://foodchainstats.github.io/fsp/
 template:
   bootstrap: 5
 
+reference:
+- title: By function category
+  desc: >
+    In this section the package functions are listed by their operation. If you 
+    want to do things step by step you'll use these to download and then wrangle
+    data before processing the data into pocketbook format. You can view the
+    same functions organised into pocketbook topics in the 'By topic' section.
+- subtitle: URLs
+  desc: >
+    The urls that the package uses to access the data files. `url_*` functions 
+    simply store the address of where the datasets are. They are used by other
+    fsp functions to download data. If things arent working the first thing you
+    can do is manually check these url to see that they are pointing to the
+    right data.
+  contents:
+  - starts_with("url_")
+- subtitle: Acquire data
+  desc: >
+    `acquire_*` functions actually download data. By default they download into
+    a temporary file, but you can specify a folder to download to. These 
+    functions return the path to the downloaded file. You can use the output of 
+    `acquire_*` functions with, eg `read.csv()` or other similar functions.
+  contents:
+  - starts_with("acquire_")
+- subtitle: Get data
+  desc: >
+    `get_*` functions wrap around `url` and `acquire`, reading in data and
+    returning a tibble. In most cases they also do a bit of light processing, 
+    eg cleaning up variable names. For some source datasets they may return an
+    element of the underlying data, such as only the monthly or yearly data, or
+    metadata about the dataset contents.
+  contents:
+  - starts_with("get_")
+- subtitle: Misc functions
+  desc: >
+    Other helpful stuff
+  contents:
+  - jobs03_sectors
+  - compile_ag_workforce
+- title: By pocketbook topic
+- subtitle: Consumer Trends
+  desc: >
+    ONS Consumer Trends stuff
+  contents:
+  - has_concept("Consumer Trends")
+  
+

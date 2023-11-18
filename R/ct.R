@@ -3,6 +3,7 @@
 #' @param rawfile An ONS ct.csv file
 #'
 #' @return A tibble of series metadata
+#' @family {Consumer Trends}
 #' @export
 #'
 #' @examples
@@ -45,6 +46,7 @@ get_ct_metadata <- function(rawfile) {
 #' @param rawfile An ONS ct.csv file
 #'
 #' @return A tibble of quarterly series data
+#' @family {Consumer Trends}
 #' @export
 #'
 #' @examples
@@ -90,6 +92,7 @@ get_ct_quarter <- function(rawfile) {
 #' @param rawfile An ONS ct.csv file
 #'
 #' @return A tibble of annual series data
+#' @family {Consumer Trends}
 #' @export
 #'
 #' @examples
