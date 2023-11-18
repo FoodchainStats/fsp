@@ -15,8 +15,9 @@ be created. If specified the downloaded file will be named
 The file path and name of the downloaded file.
 }
 \description{
-Internally uses the \code{archive} library which requires libarchive-dev to be
-installed on Ubuntu machines
+Bulk UNCTAD data is in 7zip format (see \code{\link[=url_unctad]{url_unctad()}}). Internally uses the
+\code{archive} library which requires libarchive-dev to be installed on Ubuntu
+machines
 }
 \examples{
 \dontrun{

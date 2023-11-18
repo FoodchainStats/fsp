@@ -15,3 +15,8 @@ A tibble of series metadata
 \description{
 Get Consumer Trends metadata
 }
+\examples{
+\dontrun{
+get_ct_metadata()
+}
+}

@@ -6,6 +6,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' get_ct_metadata()
+#' }
 get_ct_metadata <- function(rawfile) {
   
   if(!missing(rawfile)){
@@ -45,6 +48,9 @@ get_ct_metadata <- function(rawfile) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' get_ct_quarter()
+#' }
 get_ct_quarter <- function(rawfile) {
   
   if(!missing(rawfile)){
@@ -87,6 +93,9 @@ get_ct_quarter <- function(rawfile) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' egt_ct_year()
+#' }
 get_ct_year <- function(rawfile) {
   
   if(!missing(rawfile)){

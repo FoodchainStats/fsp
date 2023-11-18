@@ -15,3 +15,8 @@ A tibble of quarterly series data
 \description{
 Get Consumer Trends quarterly data
 }
+\examples{
+\dontrun{
+get_ct_quarter()
+}
+}

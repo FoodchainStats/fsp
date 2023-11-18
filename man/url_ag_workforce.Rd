@@ -7,14 +7,14 @@
 url_ag_workforce()
 }
 \value{
-The url for the landing page that contains the dataset.
-\code{\link[=get_jobs03_data]{get_jobs03_data()}} uses this function and some webscraping to download and
-extract thte actual data file.
+The url for the dataset.
 }
 \description{
 Scrapes the filename of the latest data from the Defra \href{https://www.gov.uk/government/statistical-data-sets/agricultural-workforce-in-the-united-kingdom-at-1-june}{Agricultural workforce}
 site. The file is an ODS spreadsheet.
 }
 \examples{
+\dontrun{
 url_ag_workforce()
+}
 }

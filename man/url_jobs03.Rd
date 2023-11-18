@@ -7,7 +7,7 @@
 url_jobs03()
 }
 \value{
-The url for JOBS03.
+The url for the dataset.
 }
 \description{
 Scrapes the filename of the latest dataset from

@@ -15,3 +15,8 @@ A tibble of annual series data
 \description{
 Get Consumer Trends annual data
 }
+\examples{
+\dontrun{
+egt_ct_year()
+}
+}

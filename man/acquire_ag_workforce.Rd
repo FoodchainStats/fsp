@@ -15,7 +15,7 @@ be created. If specified the downloaded file will be named
 The file path and name of the downloaded file.
 }
 \description{
-Download Defra Agricultural Workforce dataset
+The downloaded file will be an ODS spreadsheet.
 }
 \examples{
 \dontrun{
