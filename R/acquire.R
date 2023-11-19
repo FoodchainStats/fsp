@@ -4,6 +4,7 @@
 #'   be created. If specified the downloaded file will be named 'jobs03.xls'.
 #'
 #' @return The file path and name of the downloaded file.
+#' @family {JOBS03}
 #' @export
 #'
 #' @examples
@@ -89,6 +90,7 @@ acquire_ct <- function(path){
 #'   'ag_workforce.ods'.
 #'
 #' @return The file path and name of the downloaded file.
+#' @family {Agricultural workforce}
 #' @export
 #'
 #' @examples
@@ -140,6 +142,7 @@ acquire_ag_workforce <- function(path) {
 #'   'commodityprices.csv'.
 #'
 #' @return The file path and name of the downloaded file.
+#' @family {UNCTAD}
 #' @export
 #'
 #' @examples

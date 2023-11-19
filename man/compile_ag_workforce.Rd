@@ -17,3 +17,10 @@ Compile GB Agricultural workforce data
 data <- compile_ag_workforce()
 }
 }
+\seealso{
+Other {Agricultural workforce}: 
+\code{\link{acquire_ag_workforce}()},
+\code{\link{get_ag_workforce}()},
+\code{\link{url_ag_workforce}()}
+}
+\concept{{Agricultural workforce}}

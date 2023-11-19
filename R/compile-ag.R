@@ -1,6 +1,7 @@
 #' Compile GB Agricultural workforce data
 #'
 #' @return A dataframe of quarterly data
+#' @family {Agricultural workforce}
 #' @export
 #'
 #' @examples

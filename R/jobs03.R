@@ -5,6 +5,7 @@
 #' 
 #'
 #' @return A dataframe of employment data
+#' @family {JOBS03}
 #' @export
 #'
 #' @examples
@@ -16,7 +17,7 @@
 #' jobs <- acquire_jobs03()
 #' data <- get_jobs03_data(jobs)
 #' }
-get_jobs03_data <- function(file, sheet = "8. GB Totals"){
+get_jobs03 <- function(file, sheet = "8. GB Totals"){
   
   if(missing(file)) {
     jobs03 <- acquire_jobs03()

@@ -18,3 +18,10 @@ against raw JOBS03 data to extract food sectors of innterest.
 \examples{
 jobs03_sectors()
 }
+\seealso{
+Other {JOBS03}: 
+\code{\link{acquire_jobs03}()},
+\code{\link{get_jobs03}()},
+\code{\link{url_jobs03}()}
+}
+\concept{{JOBS03}}

@@ -48,6 +48,7 @@ jobs03_date2 <- function(string) {
 #' against raw JOBS03 data to extract food sectors of innterest.
 #'
 #' @return A tibble of SIC codes and sectors.
+#' @family {JOBS03}
 #' @export
 #'
 #' @examples

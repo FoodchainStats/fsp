@@ -18,4 +18,10 @@ Scrapes the filename of the latest dataset from
 url_jobs03()
 }
 }
+\seealso{
+Other {JOBS03}: 
+\code{\link{acquire_jobs03}()},
+\code{\link{get_jobs03}()},
+\code{\link{jobs03_sectors}()}
+}
 \concept{{JOBS03}}

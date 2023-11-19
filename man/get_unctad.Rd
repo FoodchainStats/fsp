@@ -20,3 +20,10 @@ Get UNCTAD data
 get_unctad()
 }
 }
+\seealso{
+Other {UNCTAD}: 
+\code{\link{acquire_unctad}()},
+\code{\link{get_unctad_metadata}()},
+\code{\link{url_unctad}()}
+}
+\concept{{UNCTAD}}

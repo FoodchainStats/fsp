@@ -29,7 +29,7 @@ lvls <- c("Agriculture",
           "Catering")
 
 ag_gb <- fsp::compile_ag_workforce()
-jobs03 <- fsp::get_jobs03_data()
+jobs03 <- fsp::get_jobs03()
 
 food <- fsp::jobs03_sectors() |> 
   dplyr::left_join(jobs03, by = dplyr::join_by(sic_division)) |> 

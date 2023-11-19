@@ -23,3 +23,10 @@ jobs03 <- acquire_jobs03()
 file <- acquire_jobs03("~/downloads")
 }
 }
+\seealso{
+Other {JOBS03}: 
+\code{\link{get_jobs03}()},
+\code{\link{jobs03_sectors}()},
+\code{\link{url_jobs03}()}
+}
+\concept{{JOBS03}}

@@ -4,6 +4,7 @@
 #'   [acquire_ag_workforce()].
 #'
 #' @return A tibble of workforce data
+#' @family {Agricultural workforce}
 #' @export
 #'
 #' @examples

@@ -3,6 +3,7 @@
 #' @param file An UNCTAD bulk download csv
 #'
 #' @return A tibble of UNCTAD commodity price data
+#' @family {UNCTAD}
 #' @export
 #'
 #' @examples
@@ -40,6 +41,7 @@ return(data)
 #' Get UNCTAD metadata
 #'
 #' @return A tibble of UNCTAD commodity price metadata
+#' @family {UNCTAD}
 #' @export
 #'
 #' @examples

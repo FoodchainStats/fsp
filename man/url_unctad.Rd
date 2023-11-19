@@ -18,4 +18,10 @@ is a 7zip archive file.
 url_unctad()
 }
 }
+\seealso{
+Other {UNCTAD}: 
+\code{\link{acquire_unctad}()},
+\code{\link{get_unctad_metadata}()},
+\code{\link{get_unctad}()}
+}
 \concept{{UNCTAD}}

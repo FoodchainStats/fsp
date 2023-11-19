@@ -26,3 +26,10 @@ unctad <- acquire_unctad()
 file <- acquire_unctad("~/downloads")
 }
 }
+\seealso{
+Other {UNCTAD}: 
+\code{\link{get_unctad_metadata}()},
+\code{\link{get_unctad}()},
+\code{\link{url_unctad}()}
+}
+\concept{{UNCTAD}}
