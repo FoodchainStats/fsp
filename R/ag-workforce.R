@@ -2,6 +2,7 @@
 #'
 #' @param file A spreadsheet in ods format. If omitted, will be downloaded using
 #'   [acquire_ag_workforce()].
+#' @param sheet Spreadsheet tab name or number
 #'
 #' @return A tibble of workforce data
 #' @family {Agricultural workforce}
@@ -36,7 +37,7 @@ get_ag_workforce <- function(file, sheet = "Ag_workforce_by_country") {
 
   title <- 
     dplyr::filter(cells, .data$chr == "England") |> 
-    dplyr::select(.data$row, .data$col) |> 
+    dplyr::select("row", "col") |> 
     dplyr::mutate(row = .data$row-1) |> 
     dplyr::inner_join(cells, by = c("row", "col"))
 
@@ -50,22 +51,23 @@ data <- purrr::map(partitions$cells, \(x){
   
   year <- x |> 
     dplyr::filter(row == 2) |> 
-    dplyr::select(row, col, year = .data$chr) |> 
+    dplyr::select(row, col, year = "chr") |> 
     tidyr::fill(year, .direction = "downup")
   
-  
+  # warnings suppressed in as.numeric because I think its picking up on 'nc' in
+  # the spreadsheet - a spurious warning
   out <- data_cells |> 
     unpivotr::enhead(year, "up") |> 
     unpivotr::behead("up", "country") |> 
     dplyr::group_by(.data$country) |> 
     dplyr::filter(!is.na(.data$chr)) |> 
-    tidyr::fill(.data$cat1, .direction = "down") |> 
-    tidyr::fill(.data$cat2, .direction = "down") |> 
+    tidyr::fill("cat1", .direction = "down") |> 
+    tidyr::fill("cat2", .direction = "down") |> 
     dplyr::mutate(category = paste(.data$cat1, .data$cat2, .data$cat3, sep = " - "),
                   category = stringr::str_remove_all(.data$category, " - NA"),
-                  chr = as.numeric(.data$chr),
+                  chr = suppressWarnings(as.numeric(.data$chr)),
                   country = stringr::str_remove(.data$country, "\\([a-z]\\)")) |> 
-    dplyr::select(year, .data$country, .data$category, value = .data$chr) |> 
+    dplyr::select(year, "country", "category", value = "chr") |> 
     dplyr::ungroup()
   
   return(out)
