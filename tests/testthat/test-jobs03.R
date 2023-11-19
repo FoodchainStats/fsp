@@ -1,4 +1,4 @@
-test_that("get_jobs03 returns a data frame witha positive length", {
+test_that("get_jobs03 returns a data frame with a positive length", {
   skip_on_cran()
   
   df <- get_jobs03()

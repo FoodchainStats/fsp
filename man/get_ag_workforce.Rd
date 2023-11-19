@@ -4,7 +4,7 @@
 \alias{get_ag_workforce}
 \title{Extract data from an Agricultural workforce ods file}
 \usage{
-get_ag_workforce(file)
+get_ag_workforce(file, sheet = "Ag_workforce_by_country")
 }
 \arguments{
 \item{file}{A spreadsheet in ods format. If omitted, will be downloaded using

@@ -25,11 +25,10 @@ reference:
     
 - subtitle: URLs
   desc: >
-    The urls that the package uses to access the data files. `url_*` functions 
-    simply store the address of where the datasets are. They are used by other
-    fsp functions to download data. If things arent working the first thing you
-    can do is manually check these url to see that they are pointing to the
-    right data.
+    `url_*` functions simply return the address of where the datasets are. They 
+    are used by other fsp functions to download data. If things arent working
+    the first thing you can do is manually check these url to see that they are 
+    pointing to the right data.
   contents:
   - starts_with("url_")
 - subtitle: Acquire data

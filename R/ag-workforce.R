@@ -17,14 +17,14 @@
 #' data <- get_ag_workforce(ag)
 #' 
 #' }
-get_ag_workforce <- function(file) {
+get_ag_workforce <- function(file, sheet = "Ag_workforce_by_country") {
   
   if(missing(file)) {
     file <- acquire_ag_workforce()
   } 
 
   file <- suppressMessages(
-    readODS::read_ods(file, sheet = "Ag_workforce_by_country", col_names = FALSE)
+    readODS::read_ods(file, sheet = sheet, col_names = FALSE)
   )
   
   cells <- unpivotr::as_cells(file) |> 
@@ -65,7 +65,8 @@ data <- purrr::map(partitions$cells, \(x){
                   category = stringr::str_remove_all(.data$category, " - NA"),
                   chr = as.numeric(.data$chr),
                   country = stringr::str_remove(.data$country, "\\([a-z]\\)")) |> 
-    dplyr::select(year, .data$country, .data$category, value = .data$chr)
+    dplyr::select(year, .data$country, .data$category, value = .data$chr) |> 
+    dplyr::ungroup()
   
   return(out)
   
