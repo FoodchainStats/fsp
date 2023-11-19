@@ -9,6 +9,8 @@ get_ag_workforce(file, sheet = "Ag_workforce_by_country")
 \arguments{
 \item{file}{A spreadsheet in ods format. If omitted, will be downloaded using
 \code{\link[=acquire_ag_workforce]{acquire_ag_workforce()}}.}
+
+\item{sheet}{Spreadsheet tab name or number}
 }
 \value{
 A tibble of workforce data
