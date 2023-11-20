@@ -21,7 +21,7 @@ ag_gb <- ag |>
   dplyr::summarise(value = sum(.data$value)) |> 
   dplyr::mutate(date = lubridate::ymd(.data$year, truncated = 2) + months(2),
                 sector = "Agriculture", value = .data$value/1000) |> 
-  dplyr::select(-.data$year)
+  dplyr::select(-"year")
 
 mindate <- min(ag_gb$date)
 
@@ -30,8 +30,9 @@ mindate <- min(ag_gb$date)
 maxdate <- lubridate::make_date(lubridate::year(max(ag_gb$date)), month = 12, day = 1)
 
 z <- data.frame(date = seq.Date(mindate, maxdate, by = "3 month")) |>
-  dplyr::left_join(ag_gb) |> 
-  tidyr::fill(c(.data$value, .data$sector))
+  dplyr::left_join(ag_gb, by = dplyr::join_by(date)) |> 
+  tidyr::fill(c("value", "sector")) |> 
+  tibble::as_tibble()
 
 return(z)
 
