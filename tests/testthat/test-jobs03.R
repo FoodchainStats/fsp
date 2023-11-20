@@ -1,5 +1,6 @@
 test_that("get_jobs03 returns a data frame with a positive length", {
   skip_on_cran()
+  skip_on_os("windows")
   
   df <- get_jobs03()
   

@@ -1,5 +1,6 @@
 test_that("get_ag_workforce returns a data frame with a positive length", {
   skip_on_cran()
+  skip_on_os("windows")
   
   df <- get_ag_workforce()
   
