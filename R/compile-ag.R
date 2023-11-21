@@ -1,6 +1,11 @@
 #' Compile GB Agricultural workforce data
 #'
-#' @return A dataframe of quarterly data
+#' @return A tibble of quarterly data containing:
+#' \describe{
+#'  \item{date}{Date}
+#'  \item{value}{Number of employees (000s)}
+#'  \item{sector}{Sector}
+#' }
 #' @family {Agricultural workforce}
 #' @export
 #'

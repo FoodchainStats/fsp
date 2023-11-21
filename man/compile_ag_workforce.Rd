@@ -8,6 +8,11 @@ compile_ag_workforce()
 }
 \value{
 A dataframe of quarterly data
+\describe{
+\item{date}{Date}
+\item{value}{Number of employees (000s)}
+\item{sector}{Sector}
+}
 }
 \description{
 Compile GB Agricultural workforce data
