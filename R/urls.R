@@ -106,3 +106,18 @@ url_unctad <- function() {
   return(file)
   
 }
+
+
+
+#' URL for the current Annual Business Survey dataset
+#' 
+#' Returns the latest file from the [ONS](https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/datasets/uknonfinancialbusinesseconomyannualbusinesssurveysectionsas)
+#'
+#' @return The url for the dataset
+#' @export
+#'
+#' @examples
+url_abs <- function() {
+  url <- "https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/businessservices/datasets/uknonfinancialbusinesseconomyannualbusinesssurveysectionsas/current/abssectionsas.xlsx"
+  return(url)
+}
