@@ -23,7 +23,7 @@ ct <- acquire_ct()
 ct_metadata <- get_ct_metadata(ct)
 ct_year <- get_ct_year(ct)
 
-
+# alternate c("ABZV","ADFM","ADIG","ABQI","ADIP","ADIT","ADML")
 cdids <- c("ABZV", "ADFM", "ADXO", "ADXP")
 
 
