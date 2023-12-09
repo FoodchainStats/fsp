@@ -17,9 +17,8 @@ A tibble of UNCTAD commodity price metadata
 Get UNCTAD metadata
 }
 \examples{
-\dontrun{
-get_unctad_metadata()
-}
+a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+get_unctad_metadata(a)
 }
 \seealso{
 Other {UNCTAD}: 

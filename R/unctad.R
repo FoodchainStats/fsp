@@ -53,9 +53,9 @@ return(data)
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' get_unctad_metadata()
-#' }
+
+#' a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+#' get_unctad_metadata(a)
 get_unctad_metadata <- function(file) {
 
     if(missing(file)) {

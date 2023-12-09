@@ -77,10 +77,12 @@ url_ag_workforce <- function() {
 
 #' URL for UNCTAD commodity price indices data
 #'
-#' Scrapes the filename of the latest data from the UNCTAD [bulk
-#' download](https://unctadstat.unctad.org/EN/BulkDownload.html) page. The file
-#' is a 7zip archive file.
-#'
+#' Currently the data cannot be scraped (or I am not clever enough to do so),
+#' and so this function simply returns the url where it can be manually
+#' downloaded. The file is a 7zip archive. The [acquire_unctad()], [get_unctad()]
+#' and [get_unctad_metadata()] functions all require access to a downloaded
+#' 7zip. This package includes an example file - access it using:
+#' system.file("extdata", "unctad-example.csv.7z", package = "fsp")
 #'
 #' @return the url for commodity price indices
 #' @family {UNCTAD}
