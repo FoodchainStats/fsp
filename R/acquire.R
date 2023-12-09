@@ -147,11 +147,10 @@ acquire_ag_workforce <- function(path) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' unctad <- acquire_unctad()
 #' 
-#' file <- acquire_unctad("~/downloads")
-#' }
+#' a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+#' a
+#' acquire_unctad(a)
 acquire_unctad <- function(file, path) {
   
   if(missing(file)) {

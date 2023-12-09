@@ -82,7 +82,7 @@ url_ag_workforce <- function() {
 #' downloaded. The file is a 7zip archive. The [acquire_unctad()], [get_unctad()]
 #' and [get_unctad_metadata()] functions all require access to a downloaded
 #' 7zip. This package includes an example file - access it using:
-#' system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+#' `system.file("extdata", "unctad-example.csv.7z", package = "fsp")`
 #'
 #' @return the url for commodity price indices
 #' @family {UNCTAD}

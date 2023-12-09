@@ -22,11 +22,10 @@ manually (see \code{\link[=url_unctad]{url_unctad()}}). Internally uses the \cod
 requires libarchive-dev to be installed on Ubuntu machines.
 }
 \examples{
-\dontrun{
-unctad <- acquire_unctad()
 
-file <- acquire_unctad("~/downloads")
-}
+a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+a
+acquire_unctad(a)
 }
 \seealso{
 Other {UNCTAD}: 

@@ -18,6 +18,7 @@ Get UNCTAD metadata
 }
 \examples{
 a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+a
 get_unctad_metadata(a)
 }
 \seealso{

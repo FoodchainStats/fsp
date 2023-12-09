@@ -19,6 +19,7 @@ Get UNCTAD data
 \examples{
 
 a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+a
 get_unctad(a)
 
 }
