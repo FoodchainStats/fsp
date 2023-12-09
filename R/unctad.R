@@ -8,9 +8,10 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' get_unctad()
-#' }
+#' 
+#' a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+#' get_unctad(a)
+#' 
 get_unctad <- function(file){
 
   if(missing(file)) {

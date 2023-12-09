@@ -123,6 +123,7 @@ url_unctad <- function() {
 #' @export
 #'
 #' @examples
+#' url_abs()
 url_abs <- function() {
   url <- "https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/businessservices/datasets/uknonfinancialbusinesseconomyannualbusinesssurveysectionsas/current/abssectionsas.xlsx"
   return(url)
