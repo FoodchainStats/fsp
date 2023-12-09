@@ -7,7 +7,8 @@
 get_unctad(file)
 }
 \arguments{
-\item{file}{An UNCTAD bulk download csv}
+\item{file}{An UNCTAD 7zip download file (see \code{\link[=url_unctad]{url_unctad()}} for where to get
+it)}
 }
 \value{
 A tibble of UNCTAD commodity price data

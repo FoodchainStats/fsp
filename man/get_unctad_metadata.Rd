@@ -4,7 +4,11 @@
 \alias{get_unctad_metadata}
 \title{Get UNCTAD metadata}
 \usage{
-get_unctad_metadata()
+get_unctad_metadata(file)
+}
+\arguments{
+\item{file}{An UNCTAD 7zip download file (see \code{\link[=url_unctad]{url_unctad()}} for where to get
+it)}
 }
 \value{
 A tibble of UNCTAD commodity price metadata

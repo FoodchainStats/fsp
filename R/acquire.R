@@ -131,15 +131,16 @@ acquire_ag_workforce <- function(path) {
 
 
 
-#' Download UNCTAD Commodity Price indices
+#' Extract UNCTAD Commodity Price indices
 #' 
-#' Bulk UNCTAD data is in 7zip format (see [url_unctad()]). Internally uses the
-#' `archive` library which requires libarchive-dev to be installed on Ubuntu
-#' machines
+#' UNCTAD data is in 7zip format, and for now at least needs to be downloaded
+#' manually (see [url_unctad()]). Internally uses the `archive` library which
+#' requires libarchive-dev to be installed on Ubuntu machines.
 #'
 #' @param path Folder to put the downloaded data in. If missing a tempfile will
 #'   be created. If specified the downloaded file will be named
 #'   'commodityprices.csv'.
+#' @param file downloaded UNCTAD commodity data file in 7zip format
 #'
 #' @return The file path and name of the downloaded file.
 #' @family {UNCTAD}
@@ -151,19 +152,23 @@ acquire_ag_workforce <- function(path) {
 #' 
 #' file <- acquire_unctad("~/downloads")
 #' }
-acquire_unctad <- function(path) {
+acquire_unctad <- function(file, path) {
+  
+  if(missing(file)) {
+    stop("Please supply an UNCTAD 7zip file. See 'url_unctad()' for details of where to get this file")
+  }
   
   if (!missing(path)) {
     if (!dir.exists(path)) 
       stop(paste(path, "does not exist"))
   }
   
-  url <- url_unctad()
+  # url <- url_unctad()
   
-  tmp1 <- tempfile()
+  # tmp1 <- tempfile()
   tmpd <- tempfile()
-  utils::download.file(url, tmp1)
-  archive::archive_extract(tmp1, tmpd)
+  # utils::download.file(url, tmp1)
+  archive::archive_extract(file, tmpd)
   unctadfile <- list.files(tmpd, full.names = TRUE)
   
   

@@ -7,7 +7,7 @@
 compile_ag_workforce()
 }
 \value{
-A dataframe of quarterly data
+A tibble of quarterly data containing:
 \describe{
 \item{date}{Date}
 \item{value}{Number of employees (000s)}

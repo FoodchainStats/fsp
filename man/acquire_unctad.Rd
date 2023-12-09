@@ -2,11 +2,13 @@
 % Please edit documentation in R/acquire.R
 \name{acquire_unctad}
 \alias{acquire_unctad}
-\title{Download UNCTAD Commodity Price indices}
+\title{Extract UNCTAD Commodity Price indices}
 \usage{
-acquire_unctad(path)
+acquire_unctad(file, path)
 }
 \arguments{
+\item{file}{downloaded UNCTAD commodity data file in 7zip format}
+
 \item{path}{Folder to put the downloaded data in. If missing a tempfile will
 be created. If specified the downloaded file will be named
 'commodityprices.csv'.}
@@ -15,9 +17,9 @@ be created. If specified the downloaded file will be named
 The file path and name of the downloaded file.
 }
 \description{
-Bulk UNCTAD data is in 7zip format (see \code{\link[=url_unctad]{url_unctad()}}). Internally uses the
-\code{archive} library which requires libarchive-dev to be installed on Ubuntu
-machines
+UNCTAD data is in 7zip format, and for now at least needs to be downloaded
+manually (see \code{\link[=url_unctad]{url_unctad()}}). Internally uses the \code{archive} library which
+requires libarchive-dev to be installed on Ubuntu machines.
 }
 \examples{
 \dontrun{

@@ -91,19 +91,25 @@ url_ag_workforce <- function() {
 #' url_unctad()
 #' }
 url_unctad <- function() {
+
+  url <- "https://unctadstat.unctad.org/datacentre/"
+  message("Download currently cannot be scraped. Download bulk monthly commodity prices from:")
   
-  url <- "https://unctadstat.unctad.org/EN/BulkDownload.html"
+  return(url)
   
-  html <- rvest::read_html(url)
-  
-  links <- html |> rvest::html_elements("a")
-  linktext <- links |> rvest::html_text2()
-  linkurls <- links |> rvest::html_attr("href")
-  datalink <- which(stringr::str_detect(linktext, "Free market commodity prices, monthly"))
-  filename <- linkurls[datalink]
-  
-  file <- paste0("https://unctadstat.unctad.org", filename)
-  return(file)
+    
+  # url <- "https://unctadstat.unctad.org/EN/BulkDownload.html"
+  # 
+  # html <- rvest::read_html(url)
+  # 
+  # links <- html |> rvest::html_elements("a")
+  # linktext <- links |> rvest::html_text2()
+  # linkurls <- links |> rvest::html_attr("href")
+  # datalink <- which(stringr::str_detect(linktext, "Free market commodity prices, monthly"))
+  # filename <- linkurls[datalink]
+  # 
+  # file <- paste0("https://unctadstat.unctad.org", filename)
+  # return(file)
   
 }
 

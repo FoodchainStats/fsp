@@ -1,6 +1,7 @@
 #' Get UNCTAD data
 #'
-#' @param file An UNCTAD bulk download csv
+#' @param file An UNCTAD 7zip download file (see [url_unctad()] for where to get
+#'   it)
 #'
 #' @return A tibble of UNCTAD commodity price data
 #' @family {UNCTAD}
@@ -13,8 +14,11 @@
 get_unctad <- function(file){
 
   if(missing(file)) {
-    file <- acquire_unctad()
+    stop("Please supply an UNCTAD 7zip file. See 'url_unctad()' for details of where to get this file")
   }
+  
+  file <- acquire_unctad(file)
+  
 
   colspec <- readr::cols(
     Period = readr::col_character(),
@@ -40,6 +44,9 @@ return(data)
 
 #' Get UNCTAD metadata
 #'
+#' @param file An UNCTAD 7zip download file (see [url_unctad()] for where to get
+#'   it)
+#'
 #' @return A tibble of UNCTAD commodity price metadata
 #' @family {UNCTAD}
 #' @export
@@ -48,9 +55,13 @@ return(data)
 #' \dontrun{
 #' get_unctad_metadata()
 #' }
-get_unctad_metadata <- function() {
+get_unctad_metadata <- function(file) {
+
+    if(missing(file)) {
+    stop("Please supply an UNCTAD 7zip file. See 'url_unctad()' for details of where to get this file")
+  }
   
-  data <- get_unctad()
+  data <- get_unctad(file)
 
   commodities <- data |> 
     dplyr::count(.data$commodity, .data$commodity_label)  
