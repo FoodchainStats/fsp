@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' # dowload in one go
+#' # download in one go
 #' data <- get_jobs03_data()
 #' 
 #' # or download first
