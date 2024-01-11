@@ -64,6 +64,8 @@ fsp_food <- food |>
   dplyr::group_by(year) |> 
   dplyr::mutate(pct_of_tot = scales::label_percent(accuracy = 0.1) (value/sum(value))) 
 
+#latest_year<-max(fsp_food$year) #potentially parameter for the latest year
+
 fsp_food |> 
   dplyr::filter(year == 2022) |>
   knitr::kable(digits = 2)
@@ -115,7 +117,7 @@ d <- x |>
   dplyr::filter(!is.na(total)) |> 
   dplyr::rename(sector = total)
 
-table <- dplyr::bind_rows(a, b, c, d) |> 
+fsp_table <- dplyr::bind_rows(a, b, c, d) |> 
   dplyr::mutate(sector = dplyr::case_when(sector == "Manufacturing" ~ "Food and Drink Manufacturing",
                                           sector == "Wholesale" ~ "Food and Drink Wholesaling",
                                           sector == "Retail" ~ "Food and Drink Retailing",
@@ -124,7 +126,9 @@ table <- dplyr::bind_rows(a, b, c, d) |>
                 value = value/1000) |> 
   dplyr::select(Sector = sector, `Employees (millions)` = value)
 
-table |> knitr::kable(digits = 3,format = "pipe")
+fsp_table |> knitr::kable(digits = 3,format = "pipe")
+
+#auk_table
 
 ```
 
