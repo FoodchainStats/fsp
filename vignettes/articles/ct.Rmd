@@ -36,6 +36,21 @@ data <- ct_metadata |>
   dplyr::group_by(series, date) |> 
   dplyr::summarise(value = sum(value))
 
+
+ alternate <- c("ABZV","ADFM","ADIG","ADIP","ADIT","ADML","ABQI")
+auk_data <- ct_metadata |> 
+  dplyr::filter(cdid %in% alternate) |> 
+  dplyr::left_join(ct_year) |> 
+  dplyr::mutate(series = dplyr::case_when(cdid == "ABZV" ~ "Household food and non-alcoholic beverages",
+                                          cdid == "ADFM" ~ "Alcoholic drinks (off licence only)",
+                                          cdid == "ADIG" ~ "Catering",
+                                          cdid == "ADIP" ~ "Household food and non-alcoholic beverages CVM",
+                                          cdid == "ADIT" ~ "Alcoholic drinks (off licence only) CVM",
+                                          cdid == "ADML" ~ "Catering CVM",
+                                          cdid == "ABQI" ~ "Household final consumption expenditure")) |> 
+  dplyr::group_by(series, date) |> 
+  dplyr::summarise(value = sum(value))
+
 data |> 
   dplyr::filter(date >= "2002-01-01") |>
   ggplot2::ggplot() +

@@ -61,3 +61,14 @@ jobs03_sectors <- function(){
   return(sectors)
 }
 
+
+
+jobs03_AUK_sectors <- function(){
+  
+  sectors <- tibble::tibble(sector = c("Manufacturing", "Manufacturing", "Manufacturing", "Manufacturing", "Wholesale", "Retail", "Retail", "Catering", "Catering", "Catering", "Fishing", "total_industries"),
+                            sic_division = c("10.1-5", "10.6-8", "10.9", "11-12", "46.30", "47.20", "47.11", "56.10", "56.20", "56.30", "03","01-98"))
+  
+  return(sectors)
+}
+
+

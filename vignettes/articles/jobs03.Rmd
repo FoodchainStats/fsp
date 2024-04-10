@@ -38,6 +38,14 @@ food <- fsp::jobs03_sectors() |>
   dplyr::bind_rows(ag_gb) |> 
   dplyr::mutate(sector = forcats::fct(sector, levels = lvls))
 
+
+#added total industries comparison
+food_auk<- jobs03_AUK_sectors() |>
+    dplyr::left_join(jobs03, by = dplyr::join_by(sic_division)) |> 
+  dplyr::group_by(sector, date) |> 
+  dplyr::summarise(value = sum(value)) |> 
+  dplyr::bind_rows(ag_gb) #Q4 2023 figures not released?
+
 food |> 
   dplyr::arrange(desc(date)) |> 
   head() |> 
