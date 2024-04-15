@@ -49,7 +49,17 @@ auk_data <- ct_metadata |>
                                           cdid == "ADML" ~ "Catering CVM",
                                           cdid == "ABQI" ~ "Household final consumption expenditure")) |> 
   dplyr::group_by(series, date) |> 
-  dplyr::summarise(value = sum(value))
+  dplyr::summarise(value = sum(value)) |>  
+  tidyr::pivot_wider(names_from=series,values_from=value)|>
+  dplyr::mutate("Total food, drink and catering expenditure"=`Household food and non-alcoholic beverages`+`Catering`+`Alcoholic drinks (off licence only)`)|>
+    dplyr::mutate("Total food, drink and catering expenditure CVM"=`Household food and non-alcoholic beverages CVM`+`Catering CVM`+`Alcoholic drinks (off licence only) CVM`)|>
+  dplyr::mutate("percent of total expenditure- Total food, drink and catering expenditure"=scales::label_percent(accuracy=0.1)(`Total food, drink and catering expenditure`/`Household final consumption expenditure`))|>
+  dplyr::mutate("percent of total expenditure- household food"=scales::label_percent(accuracy=0.1)(`Household food and non-alcoholic beverages`/`Household final consumption expenditure`))|>
+  dplyr::mutate("percent of total expenditure- food eaten out"=scales::label_percent(accuracy=0.1)(`Catering`/`Household final consumption expenditure`))|>  dplyr::mutate("percent of total expenditure- alcohol"=scales::label_percent(accuracy=0.1)(`Alcoholic drinks (off licence only)`/`Household final consumption expenditure`))
+
+write.csv(auk_data,"figure_14_5_food_expenditure.csv") #maybe saving here not optimal? For David to check
+
+
 
 data |> 
   dplyr::filter(date >= "2002-01-01") |>
