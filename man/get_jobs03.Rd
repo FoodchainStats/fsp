@@ -19,7 +19,7 @@ Extract data from a JOBS03 xls file
 }
 \examples{
 \dontrun{
-# dowload in one go
+# download in one go
 data <- get_jobs03_data()
 
 # or download first
@@ -30,6 +30,7 @@ data <- get_jobs03_data(jobs)
 \seealso{
 Other {JOBS03}: 
 \code{\link{acquire_jobs03}()},
+\code{\link{jobs03_AUK_sectors}()},
 \code{\link{jobs03_sectors}()},
 \code{\link{url_jobs03}()}
 }

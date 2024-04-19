@@ -25,7 +25,7 @@ url_unctad()
 \seealso{
 Other {UNCTAD}: 
 \code{\link{acquire_unctad}()},
-\code{\link{get_unctad_metadata}()},
-\code{\link{get_unctad}()}
+\code{\link{get_unctad}()},
+\code{\link{get_unctad_metadata}()}
 }
 \concept{{UNCTAD}}
