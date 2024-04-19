@@ -61,3 +61,27 @@ jobs03_sectors <- function(){
   return(sectors)
 }
 
+
+
+#' Dataset of  AUK JOBS03 SIC codes and food chain sectors
+#' 
+#' The 'official' SIC definition of the food chain that Defra uses is described
+#' in the [pocketbook
+#' glossary](https://www.gov.uk/government/statistics/food-statistics-pocketbook/food-statistics-in-your-pocket#glossary).
+#' This dataset uses the SIC codes included in JOBS03. It is useful to join
+#' against raw JOBS03 data to extract food sectors of innterest.
+#'
+#' @return A tibble of SIC codes and sectors.
+#' @family {JOBS03}
+#' @export
+#'
+#' @examples
+jobs03_AUK_sectors <- function(){
+  
+  sectors <- tibble::tibble(sector = c("Manufacturing", "Manufacturing", "Manufacturing", "Manufacturing", "Wholesale", "Retail", "Retail", "Catering", "Catering", "Catering", "Fishing", "total_industries"),
+                            sic_division = c("10.1-5", "10.6-8", "10.9", "11-12", "46.30", "47.20", "47.11", "56.10", "56.20", "56.30", "03","01-98"))
+  
+  return(sectors)
+}
+
+

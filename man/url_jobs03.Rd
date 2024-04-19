@@ -22,6 +22,7 @@ url_jobs03()
 Other {JOBS03}: 
 \code{\link{acquire_jobs03}()},
 \code{\link{get_jobs03}()},
+\code{\link{jobs03_AUK_sectors}()},
 \code{\link{jobs03_sectors}()}
 }
 \concept{{JOBS03}}
