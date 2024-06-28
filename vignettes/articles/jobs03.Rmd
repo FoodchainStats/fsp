@@ -44,12 +44,7 @@ food_auk<- jobs03_AUK_sectors() |>
     dplyr::left_join(jobs03, by = dplyr::join_by(sic_division)) |> 
   dplyr::group_by(sector, date) |> 
   dplyr::summarise(value = sum(value)) |> 
-  dplyr::bind_rows(ag_gb) #Q4 2023 figures not released?
-
-food |> 
-  dplyr::arrange(desc(date)) |> 
-  head() |> 
-  knitr::kable()
+  dplyr::bind_rows(ag_gb) 
 
 ```
 
@@ -72,10 +67,9 @@ fsp_food <- food |>
   dplyr::group_by(year) |> 
   dplyr::mutate(pct_of_tot = scales::label_percent(accuracy = 0.1) (value/sum(value))) 
 
-#latest_year<-max(fsp_food$year) #potentially parameter for the latest year
 
 fsp_food |> 
-  dplyr::filter(year == 2022) |>
+  dplyr::filter(year == lubridate::year(Sys.Date())-1) |> #latest year for AUK
   knitr::kable(digits = 2)
 
 
