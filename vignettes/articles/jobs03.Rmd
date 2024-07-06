@@ -31,7 +31,7 @@ lvls <- c("Agriculture",
 ag_gb <- fsp::compile_ag_workforce()
 jobs03 <- fsp::get_jobs03()
 
-food <- fsp::jobs03_sectors() |> 
+food <- fsp::jobs03_sectors(include_total = FALSE) |> 
   dplyr::left_join(jobs03, by = dplyr::join_by(sic_division)) |> 
   dplyr::group_by(sector, date) |> 
   dplyr::summarise(value = sum(value)) |> 
