@@ -10,10 +10,11 @@ jobs03_AUK_sectors()
 A tibble of SIC codes and sectors.
 }
 \description{
-The 'official' SIC definition of the food chain that Defra uses is described
-in the \href{https://www.gov.uk/government/statistics/food-statistics-pocketbook/food-statistics-in-your-pocket#glossary}{pocketbook glossary}.
-This dataset uses the SIC codes included in JOBS03. It is useful to join
-against raw JOBS03 data to extract food sectors of innterest.
+Deprecated. See the parameters of \code{\link[=jobs03_sectors]{jobs03_sectors()}} for ways of excluding
+fishing or total industry definitions.
+}
+\examples{
+jobs03_AUK_sectors()
 }
 \seealso{
 Other {JOBS03}: 

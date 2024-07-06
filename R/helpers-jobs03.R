@@ -78,7 +78,7 @@ jobs03_sectors <- function(include_fishing = TRUE, include_total = TRUE) {
 
 #' Dataset of  AUK JOBS03 SIC codes and food chain sectors
 #' 
-#' Deprecated. See the parameters [jobs03_sectors()] for ways of excluding
+#' Deprecated. See the parameters of [jobs03_sectors()] for ways of excluding
 #' fishing or total industry definitions.
 #'
 #' @return A tibble of SIC codes and sectors.
