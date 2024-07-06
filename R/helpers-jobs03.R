@@ -45,37 +45,48 @@ jobs03_date2 <- function(string) {
 #' in the [pocketbook
 #' glossary](https://www.gov.uk/government/statistics/food-statistics-pocketbook/food-statistics-in-your-pocket#glossary).
 #' This dataset uses the SIC codes included in JOBS03. It is useful to join
-#' against raw JOBS03 data to extract food sectors of innterest.
+#' against raw JOBS03 data to extract food sectors of interest.
 #'
+#' @param include_fishing logical: include the definition of the fishing industry
+#' @param include_total logical: include the definition of total UK industry
 #' @return A tibble of SIC codes and sectors.
 #' @family {JOBS03}
 #' @export
 #'
 #' @examples
 #' jobs03_sectors()
-jobs03_sectors <- function(){
+jobs03_sectors <- function(include_fishing = TRUE, include_total = TRUE) {
   
-  sectors <- tibble::tibble(sector = c("Manufacturing", "Manufacturing", "Manufacturing", "Manufacturing", "Wholesale", "Retail", "Retail", "Catering", "Catering", "Catering", "Fishing"),
-                            sic_division = c("10.1-5", "10.6-8", "10.9", "11-12", "46.30", "47.20", "47.11", "56.10", "56.20", "56.30", "03"))
+  fish <-  ""
+  total <- ""
   
-  return(sectors)
+  if(!include_fishing) fish <- "Fishing" 
+  if(!include_total) total <- "All Industries"
+  
+  x <- c(fish, total)
+  
+  sectors <- tibble::tibble(sector = c("Manufacturing", "Manufacturing", "Manufacturing", "Manufacturing", "Wholesale", "Retail", "Retail", "Catering", "Catering", "Catering", "Fishing", "All Industries"),
+                            sic_division = c("10.1-5", "10.6-8", "10.9", "11-12", "46.30", "47.20", "47.11", "56.10", "56.20", "56.30", "03", "01-98"))
+  
+  out <- sectors |> 
+    dplyr::filter(! .data$sector %in% x)
+  
+  return(out)
 }
 
 
 
 #' Dataset of  AUK JOBS03 SIC codes and food chain sectors
 #' 
-#' The 'official' SIC definition of the food chain that Defra uses is described
-#' in the [pocketbook
-#' glossary](https://www.gov.uk/government/statistics/food-statistics-pocketbook/food-statistics-in-your-pocket#glossary).
-#' This dataset uses the SIC codes included in JOBS03. It is useful to join
-#' against raw JOBS03 data to extract food sectors of innterest.
+#' Deprecated. See the parameters [jobs03_sectors()] for ways of excluding
+#' fishing or total industry definitions.
 #'
 #' @return A tibble of SIC codes and sectors.
 #' @family {JOBS03}
 #' @export
 #'
 #' @examples
+#' jobs03_AUK_sectors()
 jobs03_AUK_sectors <- function(){
   
   sectors <- tibble::tibble(sector = c("Manufacturing", "Manufacturing", "Manufacturing", "Manufacturing", "Wholesale", "Retail", "Retail", "Catering", "Catering", "Catering", "Fishing", "total_industries"),
