@@ -1,93 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/404.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/articles/ct.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/articles/fsp.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/articles/jobs03.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/articles/unctad.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/index.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/acquire_ag_workforce.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/acquire_ct.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/acquire_jobs03.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/acquire_unctad.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/compile_ag_workforce.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/fsp-package.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/get_ag_workforce.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/get_ct_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/get_ct_quarter.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/get_ct_year.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/get_jobs03.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/get_unctad.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/get_unctad_metadata.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/jobs03_AUK_sectors.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/jobs03_sectors.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/url_abs.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/url_ag_workforce.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/url_ct.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/url_jobs03.html</loc>
-  </url>
-  <url>
-    <loc>https://foodchainstats.github.io/fsp/reference/url_unctad.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://foodchainstats.github.io/fsp/404.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/LICENSE.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/articles/ct.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/articles/fsp.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/articles/index.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/articles/jobs03.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/articles/unctad.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/authors.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/index.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/acquire_ag_workforce.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/acquire_ct.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/acquire_jobs03.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/acquire_unctad.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/compile_ag_workforce.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/fsp-package.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/get_ag_workforce.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/get_ct_metadata.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/get_ct_quarter.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/get_ct_year.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/get_jobs03.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/get_unctad.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/get_unctad_metadata.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/index.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/jobs03_AUK_sectors.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/jobs03_sectors.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/url_abs.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/url_ag_workforce.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/url_ct.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/url_jobs03.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/url_unctad.html</loc></url>
 </urlset>
+
