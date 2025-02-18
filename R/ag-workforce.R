@@ -31,9 +31,7 @@ get_ag_workforce <- function(file, sheet = "Ag_workforce_by_country") {
   cells <- unpivotr::as_cells(file) |> 
     dplyr::filter(dplyr::between(row, 2, 18)) |> 
     # dplyr::select(row, col, data_type, numeric, character, date) |> 
-    unpivotr::behead("left", "cat1") |> 
-    unpivotr::behead("left", "cat2") |> 
-    unpivotr::behead("left", "cat3") 
+    unpivotr::behead("left", "cat1") 
 
   title <- 
     dplyr::filter(cells, .data$chr == "England") |> 
@@ -62,8 +60,7 @@ data <- purrr::map(partitions$cells, \(x){
     dplyr::group_by(.data$country) |> 
     dplyr::filter(!is.na(.data$chr)) |> 
     tidyr::fill("cat1", .direction = "down") |> 
-    tidyr::fill("cat2", .direction = "down") |> 
-    dplyr::mutate(category = paste(.data$cat1, .data$cat2, .data$cat3, sep = " - "),
+    dplyr::mutate(category = .data$cat1,
                   category = stringr::str_remove_all(.data$category, " - NA"),
                   chr = suppressWarnings(as.numeric(.data$chr)),
                   country = stringr::str_remove(.data$country, "\\([a-z]\\)")) |> 
