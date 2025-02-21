@@ -130,3 +130,34 @@ url_abs <- function() {
   url <- "https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/businessservices/datasets/uknonfinancialbusinesseconomyannualbusinesssurveysectionsas/current/abssectionsas.xlsx"
   return(url)
 }
+
+
+
+
+#' URL for Business Population Estimates
+#'
+#' Returns the collection page for [Business Population Estimates](https://www.gov.uk/government/collections/business-population-estimates)
+#'
+#' @param year
+#' 
+#' @returns The url for the BPE collection page
+#' @export
+#'
+#' @examples
+#' url_bpe()
+url_bpe <- function(year = 2024) {
+  
+  if(year <=2013 | year >= as.numeric(format(Sys.Date(), "%Y"))) message("Are you sure you've used a valid year?")
+  
+  url <- paste0("https://www.gov.uk/government/statistics/business-population-estimates-", year)
+  
+  html <- rvest::read_html(url)
+  links <- html |> rvest::html_elements("a")
+  linktext <- links |> rvest::html_text2()
+  linkurls <- links |> rvest::html_attr("href")
+  datalink <- which(stringr::str_detect(linktext, "detailed tables \\(MS Excel\\)"))
+  file <- linkurls[datalink]
+  message("This generated based on assumptions.\nYou may want to check it.")
+  return(file)
+  
+}

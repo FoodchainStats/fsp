@@ -107,13 +107,7 @@ acquire_ag_workforce <- function(path) {
   }
   
   url <- url_ag_workforce()
-  # html <- rvest::read_html(url)
-  # links <- html |> rvest::html_elements("a")
-  # linktext <- links |> rvest::html_text2()
-  # linkurls <- links |> rvest::html_attr("href")
-  # datalink <- which(stringr::str_detect(linktext, "Agricultural workforce in the United Kingdom at 1 June"))
-  # 
-  # filename <- linkurls[datalink]
+
   
   if (missing(path)) {
     tmp <- tempfile()
@@ -177,5 +171,38 @@ acquire_unctad <- function(file, path) {
   }
   
   return(unctadfile)
+  
+}
+
+
+#' Title
+#'
+#' @param year 
+#' @param path 
+#'
+#' @returns
+#' @export
+#'
+#' @examples
+acquire_bpe <- function(year = 2024, path) {
+  
+  if (!missing(path)) {
+    if (!dir.exists(path)) 
+      stop(paste(path, "does not exist"))
+  }
+  
+  url <- url_bpe(year = year)
+  
+  if (missing(path)) {
+    tmp <- tempfile()
+    utils::download.file(url, tmp)
+    bpefile <- tmp
+  } else {
+    utils::download.file(url, destfile = paste0(path, "/", 
+                                                "bpe_", year, ".xlsx"))
+    bpefile <- paste0(path, "/","bpe_", year, ".xlsx")
+  }
+  
+  return(bpefile)
   
 }
