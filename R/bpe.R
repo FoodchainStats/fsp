@@ -6,15 +6,22 @@
 #' @export
 #'
 #' @examples
-compile_bpe <- function(url) {
+get_bpe <- function(rawfile, year = 2024) {
   
-  tmp <- tempfile()
-  utils::download.file(url, tmp)
-  file <- tmp
+  if(!missing(rawfile)){
+    if(!file.exists(rawfile)) stop(paste(rawfile, "does not exist"))
+  }
   
-  cells <- tidyxl::xlsx_cells(file, sheets = "Table 6")
+  if(missing(rawfile)){
+    url <- url_bpe(year = year)
+    tmp <- tempfile()
+    utils::download.file(url, tmp)
+    rawfile <- tmp
+  }  
+
+  cells <- tidyxl::xlsx_cells(rawfile, sheets = "Table 6")
   
-  formats <- tidyxl::xlsx_formats(file)
+  formats <- tidyxl::xlsx_formats(rawfile)
   
   bold <- formats$local$font$bold
   
