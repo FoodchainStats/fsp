@@ -21,10 +21,9 @@ egt_ct_year()
 }
 }
 \seealso{
-Other {Consumer Trends}: 
+Other Consumer Trends: 
 \code{\link{acquire_ct}()},
 \code{\link{get_ct_metadata}()},
-\code{\link{get_ct_quarter}()},
-\code{\link{url_ct}()}
+\code{\link{get_ct_quarter}()}
 }
-\concept{{Consumer Trends}}
+\concept{Consumer Trends}

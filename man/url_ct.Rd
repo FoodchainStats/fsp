@@ -15,11 +15,4 @@ URL for the current Consumer Trends dataset
 \examples{
 url_ct()
 }
-\seealso{
-Other {Consumer Trends}: 
-\code{\link{acquire_ct}()},
-\code{\link{get_ct_metadata}()},
-\code{\link{get_ct_quarter}()},
-\code{\link{get_ct_year}()}
-}
 \concept{{Consumer Trends}}

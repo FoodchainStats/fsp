@@ -122,6 +122,7 @@ url_unctad <- function() {
 #' Returns the latest file from the [ONS](https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/datasets/uknonfinancialbusinesseconomyannualbusinesssurveysectionsas)
 #'
 #' @return The url for the dataset
+#' @family Annual Business Survey
 #' @export
 #'
 #' @examples
@@ -136,11 +137,14 @@ url_abs <- function() {
 
 #' URL for Business Population Estimates
 #'
-#' Returns the collection page for [Business Population Estimates](https://www.gov.uk/government/collections/business-population-estimates)
+#' Returns a URL for a [Business Population Estimates](https://www.gov.uk/government/collections/business-population-estimates)
+#' detailed MS Excel spreadsheet. The URL is generated using the year parameter
+#' and depends on gov.uk page naming consistency.
 #'
-#' @param year
+#' @param year The year to get data for (> 2012)
 #' 
 #' @returns The url for the BPE collection page
+#' @family Business Population Estimates
 #' @export
 #'
 #' @examples

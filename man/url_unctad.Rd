@@ -22,10 +22,4 @@ and \code{\link[=get_unctad_metadata]{get_unctad_metadata()}} functions all requ
 url_unctad()
 }
 }
-\seealso{
-Other {UNCTAD}: 
-\code{\link{acquire_unctad}()},
-\code{\link{get_unctad}()},
-\code{\link{get_unctad_metadata}()}
-}
 \concept{{UNCTAD}}

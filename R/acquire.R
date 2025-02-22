@@ -4,7 +4,7 @@
 #'   be created. If specified the downloaded file will be named 'jobs03.xls'.
 #'
 #' @return The file path and name of the downloaded file.
-#' @family {JOBS03}
+#' @family JOBS03
 #' @export
 #'
 #' @examples
@@ -46,7 +46,7 @@ acquire_jobs03 <- function(path){
 #'   be created. If specified the downloaded file will be named 'ct.csv'.
 #'
 #' @return The file path and name of the downloaded file.
-#' @family {Consumer Trends}
+#' @family Consumer Trends
 #' @export
 #'
 #' @examples
@@ -90,7 +90,7 @@ acquire_ct <- function(path){
 #'   'ag_workforce.ods'.
 #'
 #' @return The file path and name of the downloaded file.
-#' @family {Agricultural workforce}
+#' @family Agricultural workforce
 #' @export
 #'
 #' @examples
@@ -137,7 +137,7 @@ acquire_ag_workforce <- function(path) {
 #' @param file downloaded UNCTAD commodity data file in 7zip format
 #'
 #' @return The file path and name of the downloaded file.
-#' @family {UNCTAD}
+#' @family UNCTAD
 #' @export
 #'
 #' @examples
@@ -175,15 +175,25 @@ acquire_unctad <- function(file, path) {
 }
 
 
-#' Title
+
+
+#' Download Business Population Estimate data
 #'
-#' @param year 
-#' @param path 
+#' @param year The year to download data for (> 2012)
+#' @param path Folder to put the downloaded data in. If missing a tempfile will
+#'   be created. If specified the downloaded file will be named
+#'   'bpe_year.xlsx'.
 #'
-#' @returns
+#' @returns The file path of the downloaded file
+#' @family Business Population Estimates
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' bpe <- acquire_bpe(year = 2022)
+#' 
+#' file <- acquire_bpe("~/downloads")
+#' }
 acquire_bpe <- function(year = 2024, path) {
   
   if (!missing(path)) {

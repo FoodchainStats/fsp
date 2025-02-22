@@ -5,17 +5,17 @@
 #' 
 #'
 #' @return A dataframe of employment data
-#' @family {JOBS03}
+#' @family JOBS03
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' # download in one go
-#' data <- get_jobs03_data()
+#' data <- get_jobs03()
 #' 
 #' # or download first
 #' jobs <- acquire_jobs03()
-#' data <- get_jobs03_data(jobs)
+#' data <- get_jobs03(jobs)
 #' }
 get_jobs03 <- function(file, sheet = "8. GB Totals"){
   

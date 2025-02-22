@@ -30,9 +30,8 @@ data <- get_ag_workforce(ag)
 }
 }
 \seealso{
-Other {Agricultural workforce}: 
+Other Agricultural workforce: 
 \code{\link{acquire_ag_workforce}()},
-\code{\link{compile_ag_workforce}()},
-\code{\link{url_ag_workforce}()}
+\code{\link{compile_ag_workforce}()}
 }
-\concept{{Agricultural workforce}}
+\concept{Agricultural workforce}

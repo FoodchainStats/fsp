@@ -25,9 +25,8 @@ file <- acquire_ag_workforce("~/downloads")
 }
 }
 \seealso{
-Other {Agricultural workforce}: 
+Other Agricultural workforce: 
 \code{\link{compile_ag_workforce}()},
-\code{\link{get_ag_workforce}()},
-\code{\link{url_ag_workforce}()}
+\code{\link{get_ag_workforce}()}
 }
-\concept{{Agricultural workforce}}
+\concept{Agricultural workforce}

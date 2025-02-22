@@ -50,7 +50,7 @@ jobs03_date2 <- function(string) {
 #' @param include_fishing logical: include the definition of the fishing industry
 #' @param include_total logical: include the definition of total UK industry
 #' @return A tibble of SIC codes and sectors.
-#' @family {JOBS03}
+#' @family JOBS03
 #' @export
 #'
 #' @examples
@@ -82,7 +82,7 @@ jobs03_sectors <- function(include_fishing = TRUE, include_total = TRUE) {
 #' fishing or total industry definitions.
 #'
 #' @return A tibble of SIC codes and sectors.
-#' @family {JOBS03}
+#' @family JOBS03
 #' @export
 #'
 #' @examples
