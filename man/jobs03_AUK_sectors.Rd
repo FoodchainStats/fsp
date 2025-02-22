@@ -17,10 +17,9 @@ fishing or total industry definitions.
 jobs03_AUK_sectors()
 }
 \seealso{
-Other {JOBS03}: 
+Other JOBS03: 
 \code{\link{acquire_jobs03}()},
 \code{\link{get_jobs03}()},
-\code{\link{jobs03_sectors}()},
-\code{\link{url_jobs03}()}
+\code{\link{jobs03_sectors}()}
 }
-\concept{{JOBS03}}
+\concept{JOBS03}

@@ -6,7 +6,7 @@
 #'  \item{value}{Number of employees (000s)}
 #'  \item{sector}{Sector}
 #' }
-#' @family {Agricultural workforce}
+#' @family Agricultural workforce
 #' @export
 #'
 #' @examples

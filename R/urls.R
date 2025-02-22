@@ -122,6 +122,7 @@ url_unctad <- function() {
 #' Returns the latest file from the [ONS](https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/datasets/uknonfinancialbusinesseconomyannualbusinesssurveysectionsas)
 #'
 #' @return The url for the dataset
+#' @family Annual Business Survey
 #' @export
 #'
 #' @examples
@@ -129,4 +130,44 @@ url_unctad <- function() {
 url_abs <- function() {
   url <- "https://www.ons.gov.uk/file?uri=/businessindustryandtrade/business/businessservices/datasets/uknonfinancialbusinesseconomyannualbusinesssurveysectionsas/current/abssectionsas.xlsx"
   return(url)
+}
+
+
+
+
+#' URL for Business Population Estimates
+#'
+#' Returns a URL for a [Business Population Estimates](https://www.gov.uk/government/collections/business-population-estimates)
+#' detailed MS Excel spreadsheet. The URL is generated using the year parameter
+#' and depends on gov.uk page naming consistency.
+#'
+#' @param year The year to get data for (> 2012)
+#' 
+#' @returns The url for the BPE collection page
+#' @family Business Population Estimates
+#' @export
+#'
+#' @examples
+#' url_bpe()
+url_bpe <- function(year = 2024) {
+  
+  if(year <=2013 | year >= as.numeric(format(Sys.Date(), "%Y"))) message("Are you sure you've used a valid year?")
+  
+  url <- paste0("https://www.gov.uk/government/statistics/business-population-estimates-", year)
+  
+  html <- rvest::read_html(url)
+  links <- html |> rvest::html_elements("a")
+  linktext <- links |> rvest::html_text2()
+  linkurls <- links |> rvest::html_attr("href")
+  
+  if(year <=2018) {
+    datalink <- which(stringr::str_detect(linktext, "detailed tables"))
+  } else {
+  datalink <- which(stringr::str_detect(linktext, "detailed tables \\(MS Excel\\)"))
+  }
+  
+  file <- linkurls[datalink]
+  message("This generated based on assumptions.\nYou may want to check it.")
+  return(file)
+  
 }

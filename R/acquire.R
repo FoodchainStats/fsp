@@ -4,7 +4,7 @@
 #'   be created. If specified the downloaded file will be named 'jobs03.xls'.
 #'
 #' @return The file path and name of the downloaded file.
-#' @family {JOBS03}
+#' @family JOBS03
 #' @export
 #'
 #' @examples
@@ -46,7 +46,7 @@ acquire_jobs03 <- function(path){
 #'   be created. If specified the downloaded file will be named 'ct.csv'.
 #'
 #' @return The file path and name of the downloaded file.
-#' @family {Consumer Trends}
+#' @family Consumer Trends
 #' @export
 #'
 #' @examples
@@ -90,7 +90,7 @@ acquire_ct <- function(path){
 #'   'ag_workforce.ods'.
 #'
 #' @return The file path and name of the downloaded file.
-#' @family {Agricultural workforce}
+#' @family Agricultural workforce
 #' @export
 #'
 #' @examples
@@ -107,13 +107,7 @@ acquire_ag_workforce <- function(path) {
   }
   
   url <- url_ag_workforce()
-  # html <- rvest::read_html(url)
-  # links <- html |> rvest::html_elements("a")
-  # linktext <- links |> rvest::html_text2()
-  # linkurls <- links |> rvest::html_attr("href")
-  # datalink <- which(stringr::str_detect(linktext, "Agricultural workforce in the United Kingdom at 1 June"))
-  # 
-  # filename <- linkurls[datalink]
+
   
   if (missing(path)) {
     tmp <- tempfile()
@@ -143,7 +137,7 @@ acquire_ag_workforce <- function(path) {
 #' @param file downloaded UNCTAD commodity data file in 7zip format
 #'
 #' @return The file path and name of the downloaded file.
-#' @family {UNCTAD}
+#' @family UNCTAD
 #' @export
 #'
 #' @examples
@@ -177,5 +171,48 @@ acquire_unctad <- function(file, path) {
   }
   
   return(unctadfile)
+  
+}
+
+
+
+
+#' Download Business Population Estimate data
+#'
+#' @param year The year to download data for (> 2012)
+#' @param path Folder to put the downloaded data in. If missing a tempfile will
+#'   be created. If specified the downloaded file will be named
+#'   'bpe_year.xlsx'.
+#'
+#' @returns The file path of the downloaded file
+#' @family Business Population Estimates
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' bpe <- acquire_bpe(year = 2022)
+#' 
+#' file <- acquire_bpe("~/downloads")
+#' }
+acquire_bpe <- function(year = 2024, path) {
+  
+  if (!missing(path)) {
+    if (!dir.exists(path)) 
+      stop(paste(path, "does not exist"))
+  }
+  
+  url <- url_bpe(year = year)
+  
+  if (missing(path)) {
+    tmp <- tempfile()
+    utils::download.file(url, tmp)
+    bpefile <- tmp
+  } else {
+    utils::download.file(url, destfile = paste0(path, "/", 
+                                                "bpe_", year, ".xlsx"))
+    bpefile <- paste0(path, "/","bpe_", year, ".xlsx")
+  }
+  
+  return(bpefile)
   
 }

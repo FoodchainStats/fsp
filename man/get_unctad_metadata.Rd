@@ -22,9 +22,8 @@ a
 get_unctad_metadata(a)
 }
 \seealso{
-Other {UNCTAD}: 
+Other UNCTAD: 
 \code{\link{acquire_unctad}()},
-\code{\link{get_unctad}()},
-\code{\link{url_unctad}()}
+\code{\link{get_unctad}()}
 }
-\concept{{UNCTAD}}
+\concept{UNCTAD}

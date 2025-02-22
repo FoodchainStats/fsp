@@ -20,18 +20,17 @@ Extract data from a JOBS03 xls file
 \examples{
 \dontrun{
 # download in one go
-data <- get_jobs03_data()
+data <- get_jobs03()
 
 # or download first
 jobs <- acquire_jobs03()
-data <- get_jobs03_data(jobs)
+data <- get_jobs03(jobs)
 }
 }
 \seealso{
-Other {JOBS03}: 
+Other JOBS03: 
 \code{\link{acquire_jobs03}()},
 \code{\link{jobs03_AUK_sectors}()},
-\code{\link{jobs03_sectors}()},
-\code{\link{url_jobs03}()}
+\code{\link{jobs03_sectors}()}
 }
-\concept{{JOBS03}}
+\concept{JOBS03}

@@ -4,7 +4,7 @@
 #'   it)
 #'
 #' @return A tibble of UNCTAD commodity price data
-#' @family {UNCTAD}
+#' @family UNCTAD
 #' @export
 #'
 #' @examples
@@ -50,7 +50,7 @@ return(data)
 #'   it)
 #'
 #' @return A tibble of UNCTAD commodity price metadata
-#' @family {UNCTAD}
+#' @family UNCTAD
 #' @export
 #'
 #' @examples
