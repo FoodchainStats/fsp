@@ -9,12 +9,14 @@
 <url><loc>https://foodchainstats.github.io/fsp/authors.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/index.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/acquire_ag_workforce.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/acquire_bpe.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/acquire_ct.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/acquire_jobs03.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/acquire_unctad.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/compile_ag_workforce.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/fsp-package.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/get_ag_workforce.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/get_bpe.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/get_ct_metadata.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/get_ct_quarter.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/get_ct_year.html</loc></url>
@@ -26,6 +28,7 @@
 <url><loc>https://foodchainstats.github.io/fsp/reference/jobs03_sectors.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/url_abs.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/url_ag_workforce.html</loc></url>
+<url><loc>https://foodchainstats.github.io/fsp/reference/url_bpe.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/url_ct.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/url_jobs03.html</loc></url>
 <url><loc>https://foodchainstats.github.io/fsp/reference/url_unctad.html</loc></url>

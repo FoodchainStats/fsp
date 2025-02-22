@@ -84,12 +84,12 @@
 <span><span class="va">ag_gb</span> <span class="op">&lt;-</span> <span class="fu">fsp</span><span class="fu">::</span><span class="fu"><a href="../reference/compile_ag_workforce.html">compile_ag_workforce</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">jobs03</span> <span class="op">&lt;-</span> <span class="fu">fsp</span><span class="fu">::</span><span class="fu"><a href="../reference/get_jobs03.html">get_jobs03</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Reading JOBS03</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■                            </span>  11% |  ETA: 15s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■                       </span>  28% |  ETA: 12s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span>  45% |  ETA: 10s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■            </span>  63% |  ETA:  7s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span>  80% |  ETA:  3s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span>  98% |  ETA:  0s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■                           </span>  12% |  ETA: 15s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■                      </span>  29% |  ETA: 12s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span>  46% |  ETA:  9s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■            </span>  64% |  ETA:  6s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span>  81% |  ETA:  3s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span>  99% |  ETA:  0s</span></span>
 <span></span>
 <span><span class="va">food</span> <span class="op">&lt;-</span> <span class="fu">fsp</span><span class="fu">::</span><span class="fu"><a href="../reference/jobs03_sectors.html">jobs03_sectors</a></span><span class="op">(</span>include_total <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">jobs03</span>, by <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html" class="external-link">join_by</a></span><span class="op">(</span><span class="va">sic_division</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
