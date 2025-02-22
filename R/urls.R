@@ -159,7 +159,13 @@ url_bpe <- function(year = 2024) {
   links <- html |> rvest::html_elements("a")
   linktext <- links |> rvest::html_text2()
   linkurls <- links |> rvest::html_attr("href")
+  
+  if(year <=2018) {
+    datalink <- which(stringr::str_detect(linktext, "detailed tables"))
+  } else {
   datalink <- which(stringr::str_detect(linktext, "detailed tables \\(MS Excel\\)"))
+  }
+  
   file <- linkurls[datalink]
   message("This generated based on assumptions.\nYou may want to check it.")
   return(file)
