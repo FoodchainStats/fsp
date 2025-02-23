@@ -8,6 +8,6 @@ test_that("get_bpe returns a data frame with a positive length", {
   
   expect_equal(class(df), c("tbl_df", "tbl", "data.frame"))
   expect_true(nrow(df) > 0)
-  expect_true(ncol(df) == 5)
+  expect_true(ncol(df) == 6)
   
 })
