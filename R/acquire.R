@@ -203,6 +203,10 @@ acquire_bpe <- function(year = 2024, path) {
   
   url <- url_bpe(year = year)
   
+  if(httr::http_error(url)) {
+    stop("Invalid url")
+  }
+  
   if (missing(path)) {
     tmp <- tempfile()
     utils::download.file(url, tmp)

@@ -44,7 +44,7 @@ get_bpe <- function(rawfile, year = 2024) {
                         name = "sic_desc") |> 
     unpivotr::behead("left", "size") |> 
     dplyr::mutate(sic_id = stringr::str_extract(.data$sic_desc, "[0-9][0-9]")) |> 
-    dplyr::select(.data$category, .data$sic_id, .data$sic_desc, .data$size, numeric)
+    dplyr::select("category", "sic_id", "sic_desc", "size", numeric)
   
   return(out)
 }
