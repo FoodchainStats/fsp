@@ -168,7 +168,7 @@ url_bpe <- function(year = 2024) {
   if(year <=2018) {
     datalink <- which(stringr::str_detect(linktext, "detailed tables"))
   } else {
-  datalink <- which(stringr::str_detect(linktext, "detailed tables \\(MS Excel\\)"))
+    datalink <- which(stringr::str_detect(linktext, "detailed tables \\(MS Excel\\)"))
   }
   
   file <- linkurls[datalink]
