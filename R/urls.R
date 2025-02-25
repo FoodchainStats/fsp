@@ -151,9 +151,14 @@ url_abs <- function() {
 #' url_bpe()
 url_bpe <- function(year = 2024) {
   
-  if(year <=2013 | year >= as.numeric(format(Sys.Date(), "%Y"))) message("Are you sure you've used a valid year?")
+  if(year <=2013 | year >= as.numeric(format(Sys.Date(), "%Y"))) message("Are you sure you've used a valid year (> 2012)?")
   
   url <- paste0("https://www.gov.uk/government/statistics/business-population-estimates-", year)
+  
+  if(httr::http_error(url)) {
+    stop("No valid url is available")
+  }
+  
   
   html <- rvest::read_html(url)
   links <- html |> rvest::html_elements("a")
@@ -163,11 +168,13 @@ url_bpe <- function(year = 2024) {
   if(year <=2018) {
     datalink <- which(stringr::str_detect(linktext, "detailed tables"))
   } else {
-  datalink <- which(stringr::str_detect(linktext, "detailed tables \\(MS Excel\\)"))
+    datalink <- which(stringr::str_detect(linktext, "detailed tables \\(MS Excel\\)"))
   }
   
   file <- linkurls[datalink]
-  message("This generated based on assumptions.\nYou may want to check it.")
+  if(!endsWith(file, "xlsx")) {
+  message("xls files will need to be manually converted to xlsx beforehand. \nSee the options for get_bpe for specifying file location.")
+  }
   return(file)
   
 }

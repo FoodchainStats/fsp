@@ -203,14 +203,24 @@ acquire_bpe <- function(year = 2024, path) {
   
   url <- url_bpe(year = year)
   
+  if(httr::http_error(url)) {
+    stop("Invalid url")
+  }
+
+  
+  filext <- dplyr::case_when(tools::file_ext(url) == "xls" ~ ".xls",
+                             tools::file_ext(url) == "xlsx" ~ ".xlsx",
+                             .default = "")
+  
+  
   if (missing(path)) {
     tmp <- tempfile()
     utils::download.file(url, tmp)
     bpefile <- tmp
   } else {
     utils::download.file(url, destfile = paste0(path, "/", 
-                                                "bpe_", year, ".xlsx"))
-    bpefile <- paste0(path, "/","bpe_", year, ".xlsx")
+                                                "bpe_", year, filext))
+    bpefile <- paste0(path, "/","bpe_", year, filext)
   }
   
   return(bpefile)
