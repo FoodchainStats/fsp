@@ -78,10 +78,8 @@ reference:
     UNCTAD commodity prices stuff
   contents:
   - has_concept("UNCTAD")
-  - subtitle: Business Population Estimates
+- subtitle: Business Population Estimates
   desc: >
     Business Population Estimates stuff
   contents:
   - has_concept("Business Population Estimates")
-  
-
