@@ -13,6 +13,7 @@ Imports:
     archive,
     dplyr,
     ggplot2,
+    httr,
     janitor,
     lubridate,
     mm23 (>= 0.0.0.9000),
@@ -25,6 +26,7 @@ Imports:
     stringr,
     tibble,
     tidyr,
+    tidyxl,
     unpivotr
 URL: https://foodchainstats.github.io/fsp/
 Config/Needs/website: rmarkdown
