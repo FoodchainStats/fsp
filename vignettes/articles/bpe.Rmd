@@ -1,0 +1,25 @@
+---
+title: "Business Population Estimates"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fsp)
+
+bpe <- get_bpe()
+
+bpe |> 
+  dplyr::filter(sic_id %in% c("10", "11"), 
+                stringr::str_starts(category, "Employment number")) |> 
+  dplyr::group_by(size) |>
+  dplyr::summarise(total = sum(value)) |> 
+  knitr::kable()
+
+
+```
