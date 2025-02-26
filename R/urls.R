@@ -77,12 +77,11 @@ url_ag_workforce <- function() {
 
 #' URL for UNCTAD commodity price indices data
 #'
-#' Currently the data cannot be scraped (or I am not clever enough to do so),
-#' and so this function simply returns the url where it can be manually
-#' downloaded. The file is a 7zip archive. The [acquire_unctad()], [get_unctad()]
-#' and [get_unctad_metadata()] functions all require access to a downloaded
-#' 7zip. This package includes an example file - access it using:
-#' `system.file("extdata", "unctad-example.csv.7z", package = "fsp")`
+#' When pasted into a browser, the url will download a file in the form of a
+#' 7zip archive. The [acquire_unctad()], [get_unctad()] and
+#' [get_unctad_metadata()] functions will download and unzip this file. This
+#' package includes an example file - access it using: `system.file("extdata",
+#' "unctad-example.csv.7z", package = "fsp")`
 #'
 #' @return the url for commodity price indices
 #' @family {UNCTAD}
@@ -94,8 +93,8 @@ url_ag_workforce <- function() {
 #' }
 url_unctad <- function() {
 
-  url <- "https://unctadstat.unctad.org/datacentre/"
-  message("Download currently cannot be scraped. Download bulk monthly commodity prices from:")
+  # url <- "https://unctadstat.unctad.org/datacentre/"
+  url <- "https://unctadstat-api.unctad.org/bulkdownload/US.CommodityPrice_M/US_CommodityPrice_M"
   
   return(url)
   

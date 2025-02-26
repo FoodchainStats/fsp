@@ -7,8 +7,8 @@
 get_unctad_metadata(file)
 }
 \arguments{
-\item{file}{An UNCTAD 7zip download file (see \code{\link[=url_unctad]{url_unctad()}} for where to get
-it)}
+\item{file}{An UNCTAD download file (see \code{\link[=acquire_unctad]{acquire_unctad()}}). If omitted data
+will be downloaded automatically}
 }
 \value{
 A tibble of UNCTAD commodity price metadata
@@ -17,9 +17,13 @@ A tibble of UNCTAD commodity price metadata
 Get UNCTAD metadata
 }
 \examples{
-a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
-a
-get_unctad_metadata(a)
+\dontrun{
+metadata <- get_unctad_metadata()
+
+acquire_unctad("~/downloads")
+
+get_unctad_metadata("~/downloads/commodityprices.csv")  
+}
 }
 \seealso{
 Other UNCTAD: 

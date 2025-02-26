@@ -127,41 +127,48 @@ acquire_ag_workforce <- function(path) {
 
 #' Extract UNCTAD Commodity Price indices
 #' 
-#' UNCTAD data is in 7zip format, and for now at least needs to be downloaded
-#' manually (see [url_unctad()]). Internally uses the `archive` library which
-#' requires libarchive-dev to be installed on Ubuntu machines.
+#' Downloads and unzips UNCTAD data (see [url_unctad()]). Internally uses the
+#' `archive` library which requires libarchive-dev to be installed on Ubuntu
+#' machines.
 #'
 #' @param path Folder to put the downloaded data in. If missing a tempfile will
 #'   be created. If specified the downloaded file will be named
 #'   'commodityprices.csv'.
-#' @param file downloaded UNCTAD commodity data file in 7zip format
 #'
 #' @return The file path and name of the downloaded file.
 #' @family UNCTAD
 #' @export
 #'
 #' @examples
-#' 
-#' a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+#' \dontrun{
+#' a <- acquire_unctad(a)
 #' a
-#' acquire_unctad(a)
-acquire_unctad <- function(file, path) {
+#' 
+#' acquire_unctad("~/downloads")
+#' }
+acquire_unctad <- function(path) {
   
-  if(missing(file)) {
-    stop("Please supply an UNCTAD 7zip file. See 'url_unctad()' for details of where to get this file")
-  }
+  # if(missing(file)) {
+  #   stop("Please supply an UNCTAD 7zip file. See 'url_unctad()' for details of where to get this file")
+  # }
   
   if (!missing(path)) {
     if (!dir.exists(path)) 
       stop(paste(path, "does not exist"))
   }
   
-  # url <- url_unctad()
+  z7 <- tempfile()
+  url <- url_unctad()
+  req <- httr2::request(url)
+  resp <- req |> httr2::req_perform()
+  resp |> 
+    httr2::resp_body_raw() |> 
+    writeBin(z7)
   
   # tmp1 <- tempfile()
   tmpd <- tempfile()
   # utils::download.file(url, tmp1)
-  archive::archive_extract(file, tmpd)
+  archive::archive_extract(z7, tmpd)
   unctadfile <- list.files(tmpd, full.names = TRUE)
   
   

@@ -11,11 +11,17 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(fsp)
-a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+
+a <- acquire_unctad()
+
 unctad <- get_unctad(a)
 metadata <- get_unctad_metadata(a)
 
-commodities <- c("100600.01", "151110.01", "020100.01", "100100.01", "170100.01")
+commodities <- c("100600.01",
+                 "151110.01", 
+                 "020100.01",
+                 "100100.01", 
+                 "170100.01")
 
 unctad |> 
   dplyr::filter(commodity %in% commodities, date >= "2007-01-01") |> 
@@ -23,5 +29,7 @@ unctad |>
   dplyr::mutate(index = prices/dplyr::lag(prices)) |> 
   ggplot2::ggplot() +
   ggplot2::geom_line(ggplot2::aes(x = date, y = prices)) +
-  ggplot2::facet_wrap(ggplot2::vars(commodity_label),scales = "free")
+  ggplot2::facet_wrap(ggplot2::vars(commodity_label), 
+                      labeller = ggplot2::label_wrap_gen(30), 
+                      scales = "free")
 ```

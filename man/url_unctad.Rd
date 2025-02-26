@@ -10,12 +10,10 @@ url_unctad()
 the url for commodity price indices
 }
 \description{
-Currently the data cannot be scraped (or I am not clever enough to do so),
-and so this function simply returns the url where it can be manually
-downloaded. The file is a 7zip archive. The \code{\link[=acquire_unctad]{acquire_unctad()}}, \code{\link[=get_unctad]{get_unctad()}}
-and \code{\link[=get_unctad_metadata]{get_unctad_metadata()}} functions all require access to a downloaded
-7zip. This package includes an example file - access it using:
-\code{system.file("extdata", "unctad-example.csv.7z", package = "fsp")}
+When pasted into a browser, the url will download a file in the form of a
+7zip archive. The \code{\link[=acquire_unctad]{acquire_unctad()}}, \code{\link[=get_unctad]{get_unctad()}} and
+\code{\link[=get_unctad_metadata]{get_unctad_metadata()}} functions will download and unzip this file. This
+package includes an example file - access it using: \code{system.file("extdata", "unctad-example.csv.7z", package = "fsp")}
 }
 \examples{
 \dontrun{

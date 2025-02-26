@@ -4,11 +4,9 @@
 \alias{acquire_unctad}
 \title{Extract UNCTAD Commodity Price indices}
 \usage{
-acquire_unctad(file, path)
+acquire_unctad(path)
 }
 \arguments{
-\item{file}{downloaded UNCTAD commodity data file in 7zip format}
-
 \item{path}{Folder to put the downloaded data in. If missing a tempfile will
 be created. If specified the downloaded file will be named
 'commodityprices.csv'.}
@@ -17,15 +15,17 @@ be created. If specified the downloaded file will be named
 The file path and name of the downloaded file.
 }
 \description{
-UNCTAD data is in 7zip format, and for now at least needs to be downloaded
-manually (see \code{\link[=url_unctad]{url_unctad()}}). Internally uses the \code{archive} library which
-requires libarchive-dev to be installed on Ubuntu machines.
+Downloads and unzips UNCTAD data (see \code{\link[=url_unctad]{url_unctad()}}). Internally uses the
+\code{archive} library which requires libarchive-dev to be installed on Ubuntu
+machines.
 }
 \examples{
-
-a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
+\dontrun{
+a <- acquire_unctad(a)
 a
-acquire_unctad(a)
+
+acquire_unctad("~/downloads")
+}
 }
 \seealso{
 Other UNCTAD: 
