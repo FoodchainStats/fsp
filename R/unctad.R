@@ -1,26 +1,27 @@
 #' Get UNCTAD data
 #'
-#' @param file An UNCTAD 7zip download file (see [url_unctad()] for where to get
-#'   it)
+#' @param file An UNCTAD download file (see [acquire_unctad()]). If omitted data
+#'   will be downloaded automatically
 #'
 #' @return A tibble of UNCTAD commodity price data
 #' @family UNCTAD
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data <- get_unctad()
 #' 
-#' a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
-#' a
-#' get_unctad(a)
+#' acquire_unctad("~/downloads")
 #' 
+#' get_unctad("~/downloads/commodityprices.csv")
+#' }
 get_unctad <- function(file){
 
   if(missing(file)) {
-    stop("Please supply an UNCTAD 7zip file. See 'url_unctad()' for details of where to get this file")
+    file <- acquire_unctad()
+  } else {
+    file
   }
-  
-  file <- acquire_unctad(file)
-  
 
   colspec <- readr::cols(
     Period = readr::col_character(),
@@ -46,26 +47,30 @@ return(data)
 
 #' Get UNCTAD metadata
 #'
-#' @param file An UNCTAD 7zip download file (see [url_unctad()] for where to get
-#'   it)
+#' @param file An UNCTAD download file (see [acquire_unctad()]). If omitted data
+#'   will be downloaded automatically
 #'
 #' @return A tibble of UNCTAD commodity price metadata
 #' @family UNCTAD
 #' @export
 #'
 #' @examples
-
-#' a <- system.file("extdata", "unctad-example.csv.7z", package = "fsp")
-#' a
-#' get_unctad_metadata(a)
+#' \dontrun{
+#' metadata <- get_unctad_metadata()
+#' 
+#' acquire_unctad("~/downloads")
+#' 
+#' get_unctad_metadata("~/downloads/commodityprices.csv")  
+#' }
 get_unctad_metadata <- function(file) {
 
     if(missing(file)) {
-    stop("Please supply an UNCTAD 7zip file. See 'url_unctad()' for details of where to get this file")
+    # stop("Please supply an UNCTAD 7zip file. See 'url_unctad()' for details of where to get this file")
+    data <- get_unctad()
+  } else {
+    data <- get_unctad(file)
   }
   
-  data <- get_unctad(file)
-
   commodities <- data |> 
     dplyr::count(.data$commodity, .data$commodity_label)  
   

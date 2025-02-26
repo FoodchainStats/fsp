@@ -14,6 +14,7 @@ Imports:
     dplyr,
     ggplot2,
     httr,
+    httr2,
     janitor,
     lubridate,
     mm23 (>= 0.0.0.9000),
