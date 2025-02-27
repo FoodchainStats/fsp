@@ -12,13 +12,35 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(fsp)
 
-bpe <- get_bpe()
+bpe <- get_bpe(year = 2023)
+
+lvls <- c("Small (1-49)",
+          "Medium (50-249)", 
+          "Large (500+)", 
+          "With no employees (registered)",
+          "With no employees (unregistered)")
 
 bpe |> 
   dplyr::filter(sic_id %in% c("10", "11"), 
-                stringr::str_starts(category, "Employment number")) |> 
-  dplyr::group_by(size) |>
+                stringr::str_starts(category, "Business number"),
+                !size %in% c("All employers", "All businesses")) |> 
+  dplyr::mutate(size_cat = dplyr::case_when(size == "1" ~ "Small (1-49)",
+                                            size == "2 to 4" ~ "Small (1-49)",
+                                            size == "5 to 9" ~ "Small (1-49)",
+                                            size == "10 to 19" ~ "Small (1-49)",
+                                            size == "20 to 49" ~ "Small (1-49)",
+                                            size == "50 to 99" ~ "Medium (50-249)",
+                                            size == "100 to 199" ~ "Medium (50-249)",
+                                            size == "200 to 249" ~ "Medium (50-249)",
+                                            size == "250 to 499" ~ "Large (500+)",
+                                            size == "500 or more" ~ "Large (500+)",
+                                            size == "With no employees (registered) [Note 2] [Note 4]" ~ "With no employees (registered)",
+                                            size == "With no employees (unregistered) [Note 2]"  ~ "With no employees (unregistered)"),
+                size_cat = forcats::fct(size_cat, levels = lvls)) |> 
+  dplyr::group_by(sic_desc, size_cat) |>
   dplyr::summarise(total = sum(value)) |> 
+  tidyr::pivot_wider(names_from = sic_desc, values_from = total) |> 
+  dplyr::mutate(tot = rowSums(dplyr::across(where(is.numeric))) ) |> 
   knitr::kable()
 
 
