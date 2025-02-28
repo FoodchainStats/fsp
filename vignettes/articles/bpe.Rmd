@@ -9,10 +9,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+Note that in some years some data is suppressed for disclosure and appears in
+the downloaded data as NA.
+
 ```{r setup}
 library(fsp)
 
-bpe <- get_bpe(year = 2023)
+bpe <- get_bpe(year = 2024)
 
 lvls <- c("Small (1-49)",
           "Medium (50-249)", 
@@ -40,7 +43,7 @@ bpe |>
   dplyr::group_by(sic_desc, size_cat) |>
   dplyr::summarise(total = sum(value)) |> 
   tidyr::pivot_wider(names_from = sic_desc, values_from = total) |> 
-  dplyr::mutate(tot = rowSums(dplyr::across(where(is.numeric))) ) |> 
+  dplyr::mutate(Total = rowSums(dplyr::across(where(is.numeric))) ) |> 
   knitr::kable()
 
 
