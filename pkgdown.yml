@@ -2,11 +2,12 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
+  articles/bpe: bpe.html
   articles/ct: ct.html
   articles/fsp: fsp.html
   articles/jobs03: jobs03.html
   articles/unctad: unctad.html
-last_built: 2025-02-26T14:08Z
+last_built: 2025-02-28T08:01Z
 urls:
   reference: https://foodchainstats.github.io/fsp/reference
   article: https://foodchainstats.github.io/fsp/articles
