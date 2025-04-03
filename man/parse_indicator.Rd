@@ -22,4 +22,11 @@ i$indicator
 }
 \seealso{
 \code{\link[=check_indicator]{check_indicator()}} tests whether an indicator id is valid
+
+Other Helpers: 
+\code{\link{check_indicator}()},
+\code{\link{s3_bucket}()},
+\code{\link{save_csv}()},
+\code{\link{save_graphic}()}
 }
+\concept{Helpers}

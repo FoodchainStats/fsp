@@ -11,6 +11,7 @@ ignore_unused_imports <- function() {
 #' underlying raw data.
 #'
 #' @return A string containing the bucket location
+#' @family Helpers
 #' @export
 #'
 #' @examples

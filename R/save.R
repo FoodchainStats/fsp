@@ -12,6 +12,7 @@
 #'
 #' @return A logical
 #' @seealso [parse_indicator()] extracts the components of an indicator id
+#' @family Helpers
 #' @export
 #'
 #' @examples
@@ -65,6 +66,7 @@ make_filename <- function(id, desc) {
 #'
 #' @return A named list of the indicator id components
 #' @seealso [check_indicator()] tests whether an indicator id is valid
+#' @family Helpers
 #' @export
 #'
 #' @examples
@@ -103,6 +105,7 @@ parse_indicator <- function(indicator_id) {
 #'   indicator id, description and current date (with all punctuation removed),
 #'   delimited by underscores '_'.
 #' @seealso [save_csv()] for saving data
+#' @family Helpers
 #' @export
 #'
 #' @examples
@@ -168,6 +171,7 @@ save_graphic <- function(graphic, indicator_id, indicator_desc = "") {
 #'   indicator id, description and current date (with all punctuation removed),
 #'   delimited by underscores '_'.
 #' @seealso [save_graphic()] for saving images 
+#' @family Helpers
 #' @export
 #'
 #' @examples

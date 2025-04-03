@@ -29,4 +29,11 @@ check_indicator("10.3")
 }
 \seealso{
 \code{\link[=parse_indicator]{parse_indicator()}} extracts the components of an indicator id
+
+Other Helpers: 
+\code{\link{parse_indicator}()},
+\code{\link{s3_bucket}()},
+\code{\link{save_csv}()},
+\code{\link{save_graphic}()}
 }
+\concept{Helpers}

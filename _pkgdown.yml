@@ -58,6 +58,11 @@ reference:
   desc: >
     The same functions as described in the category section, but organised by
     data source and pocketbook topic
+- subtitle: Utility functions
+  desc: >
+    Tools to aid working with S3 buckets etc.
+  contents:
+  - has_concept("Helpers")
 - subtitle: Consumer Trends
   desc: >
     ONS Consumer Trends stuff

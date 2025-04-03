@@ -31,4 +31,11 @@ save_csv(mtcars, "1.1", "mtcars data")
 }
 \seealso{
 \code{\link[=save_graphic]{save_graphic()}} for saving images
+
+Other Helpers: 
+\code{\link{check_indicator}()},
+\code{\link{parse_indicator}()},
+\code{\link{s3_bucket}()},
+\code{\link{save_graphic}()}
 }
+\concept{Helpers}

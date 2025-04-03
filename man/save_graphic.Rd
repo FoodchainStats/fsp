@@ -35,4 +35,11 @@ save_graphic(chart, "1.1", "Test graphic")
 }
 \seealso{
 \code{\link[=save_csv]{save_csv()}} for saving data
+
+Other Helpers: 
+\code{\link{check_indicator}()},
+\code{\link{parse_indicator}()},
+\code{\link{s3_bucket}()},
+\code{\link{save_csv}()}
 }
+\concept{Helpers}
