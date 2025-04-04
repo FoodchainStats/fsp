@@ -123,7 +123,7 @@ save_graphic <- function(graphic, indicator_id, indicator_desc = "") {
   }
   fname <- make_filename(indicator_id, indicator_desc)
   id <- parse_indicator(indicator_id)
-  s3path <- paste0("section_", id$section, "/i", id$section, "_", id$indicator, "/output/graphics/", fname)
+  s3path <- paste0("section_", id$section, "/", id$section, "_", id$indicator, "/output/graphics/", fname)
   tmp <- tempfile()
   
   png <- suppressMessages(aws.s3::object_exists(paste0(s3path, ".png"), s3_bucket()))
@@ -185,7 +185,7 @@ save_csv <- function(data, indicator_id, indicator_desc = "") {
   
   fname <- make_filename(indicator_id, indicator_desc)
   id <- parse_indicator(indicator_id)
-  s3path <- paste0("section_", id$section, "/i", id$section, "_", id$indicator, "/output/csv/", fname)
+  s3path <- paste0("section_", id$section, "/", id$section, "_", id$indicator, "/output/csv/", fname)
   
   csv <- suppressMessages(aws.s3::object_exists(paste0(s3path, ".csv"), s3_bucket()))
   
