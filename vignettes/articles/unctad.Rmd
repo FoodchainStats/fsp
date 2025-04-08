@@ -26,10 +26,10 @@ commodities <- c("100600.01",
 unctad |> 
   dplyr::filter(commodity %in% commodities, date >= "2007-01-01") |> 
   dplyr::group_by(commodity) |> 
-  dplyr::mutate(index = prices/dplyr::lag(prices)) |> 
+  dplyr::mutate(index = prices/prices[date == "2007-01-01"] *100) |> 
   ggplot2::ggplot() +
-  ggplot2::geom_line(ggplot2::aes(x = date, y = prices)) +
+  ggplot2::geom_line(ggplot2::aes(x = date, y = index)) +
   ggplot2::facet_wrap(ggplot2::vars(commodity_label), 
                       labeller = ggplot2::label_wrap_gen(30), 
-                      scales = "free")
+                      scales = "fixed")
 ```
