@@ -166,10 +166,12 @@ save_graphic <- function(graphic, indicator_id, indicator_desc = "") {
 #' @param data A data frame
 #' @param indicator_id A valid Pocketbook indicator id. See [check_indicator()].
 #' @param indicator_desc A title for the graphic
+#' @param input_data if TRUE will save into an section_x/input_data folder. Use
+#'   for raw input data.
 #'
-#' @return Saves a png and svg file to the S3 bucket. The filename will be the
-#'   indicator id, description and current date (with all punctuation removed),
-#'   delimited by underscores '_'.
+#' @return Saves a csv file to the S3 bucket. The filename will be the indicator
+#'   id, description and current date (with all punctuation removed), delimited
+#'   by underscores '_'.
 #' @seealso [save_graphic()] for saving images 
 #' @family Helpers
 #' @export
@@ -178,14 +180,18 @@ save_graphic <- function(graphic, indicator_id, indicator_desc = "") {
 #' \dontrun{
 #' save_csv(mtcars, "1.1", "mtcars data")
 #' }
-save_csv <- function(data, indicator_id, indicator_desc = "") {
+save_csv <- function(data, indicator_id, indicator_desc = "", input_data = FALSE) {
   if(!any(class(data) %in% c("data.frame", "tbl_df", "tbl"))){
     rlang::abort("object is not a data frame")
   }
   
   fname <- make_filename(indicator_id, indicator_desc)
   id <- parse_indicator(indicator_id)
-  s3path <- paste0("section_", id$section, "/", id$section, "_", id$indicator, "/output/csv/", fname)
+  if (input_data) {
+    s3path <- paste0("section_", id$section, "/input_data/", id$section, "_", id$indicator, "/", fname)
+  } else {
+    s3path <- paste0("section_", id$section, "/", id$section, "_", id$indicator, "/output/csv/", fname)
+  }
   
   csv <- suppressMessages(aws.s3::object_exists(paste0(s3path, ".csv"), s3_bucket()))
   

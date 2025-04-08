@@ -4,7 +4,7 @@
 \alias{save_csv}
 \title{Save Pocketbook data for publication to the S3 bucket}
 \usage{
-save_csv(data, indicator_id, indicator_desc = "")
+save_csv(data, indicator_id, indicator_desc = "", input_data = FALSE)
 }
 \arguments{
 \item{data}{A data frame}
@@ -12,11 +12,14 @@ save_csv(data, indicator_id, indicator_desc = "")
 \item{indicator_id}{A valid Pocketbook indicator id. See \code{\link[=check_indicator]{check_indicator()}}.}
 
 \item{indicator_desc}{A title for the graphic}
+
+\item{input_data}{if TRUE will save into an section_x/input_data folder. Use
+for raw input data.}
 }
 \value{
-Saves a png and svg file to the S3 bucket. The filename will be the
-indicator id, description and current date (with all punctuation removed),
-delimited by underscores '_'.
+Saves a csv file to the S3 bucket. The filename will be the indicator
+id, description and current date (with all punctuation removed), delimited
+by underscores '_'.
 }
 \description{
 Data is saved as a csv into a folder structure on the bucket. This is
