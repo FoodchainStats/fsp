@@ -54,7 +54,7 @@ indicator id, description and current date. The bucket location is encoded in
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">save_csv</span><span class="op">(</span><span class="va">data</span>, <span class="va">indicator_id</span>, indicator_desc <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">save_csv</span><span class="op">(</span><span class="va">data</span>, <span class="va">indicator_id</span>, indicator_desc <span class="op">=</span> <span class="st">""</span>, input_data <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -72,12 +72,17 @@ indicator id, description and current date. The bucket location is encoded in
 <dt id="arg-indicator-desc">indicator_desc<a class="anchor" aria-label="anchor" href="#arg-indicator-desc"></a></dt>
 <dd><p>A title for the graphic</p></dd>
 
+
+<dt id="arg-input-data">input_data<a class="anchor" aria-label="anchor" href="#arg-input-data"></a></dt>
+<dd><p>if TRUE will save into an section_x/input_data folder. Use
+for raw input data.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Saves a png and svg file to the S3 bucket. The filename will be the
-indicator id, description and current date (with all punctuation removed),
-delimited by underscores '_'.</p>
+    <p>Saves a csv file to the S3 bucket. The filename will be the indicator
+id, description and current date (with all punctuation removed), delimited
+by underscores '_'.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
