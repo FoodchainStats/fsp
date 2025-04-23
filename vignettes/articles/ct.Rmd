@@ -23,23 +23,11 @@ ct <- acquire_ct()
 ct_metadata <- get_ct_metadata(ct)
 ct_year <- get_ct_year(ct)
 
-# alternate c("ABZV","ADFM","ADIG","ABQI","ADIP","ADIT","ADML")
-cdids <- c("ABZV", "ADFM", "ADXO", "ADXP")
+# The data we need is chained volume and current prices not seasonally adjusted
+series <- c("ABZV","ADFM","ADIG","ADIP","ADIT","ADML","ABQI")
 
-
-data <- ct_metadata |> 
-  dplyr::filter(cdid %in% cdids) |> 
-  dplyr::left_join(ct_year) |> 
-  dplyr::mutate(series = dplyr::case_when(cdid == "ABZV" ~ "Household food and non-alcoholic beverages",
-                                          cdid == "ADFM" ~ "Alcoholic drinks (off licence only)",
-                                          cdid %in% c("ADXO", "ADXP") ~ "Catering")) |> 
-  dplyr::group_by(series, date) |> 
-  dplyr::summarise(value = sum(value))
-
-
- alternate <- c("ABZV","ADFM","ADIG","ADIP","ADIT","ADML","ABQI")
 auk_data <- ct_metadata |> 
-  dplyr::filter(cdid %in% alternate) |> 
+  dplyr::filter(cdid %in% series) |> 
   dplyr::left_join(ct_year) |> 
   dplyr::mutate(series = dplyr::case_when(cdid == "ABZV" ~ "Household food and non-alcoholic beverages",
                                           cdid == "ADFM" ~ "Alcoholic drinks (off licence only)",
@@ -57,11 +45,15 @@ auk_data <- ct_metadata |>
   dplyr::mutate("percent of total expenditure- household food"=scales::label_percent(accuracy=0.1)(`Household food and non-alcoholic beverages`/`Household final consumption expenditure`))|>
   dplyr::mutate("percent of total expenditure- food eaten out"=scales::label_percent(accuracy=0.1)(`Catering`/`Household final consumption expenditure`))|>  dplyr::mutate("percent of total expenditure- alcohol"=scales::label_percent(accuracy=0.1)(`Alcoholic drinks (off licence only)`/`Household final consumption expenditure`))
 
-write.csv(auk_data,"figure_14_5_food_expenditure.csv") #maybe saving here not optimal? For David to check
+# write.csv(auk_data,"figure_14_5_food_expenditure.csv")
+knitr::kable(auk_data)
 
-
-
-data |> 
+ ct_metadata |> 
+  dplyr::filter(cdid %in% c("ADIP", "ADIT", "ADML")) |> 
+  dplyr::left_join(ct_year) |> 
+  dplyr::mutate(series = dplyr::case_when(cdid == "ADIP" ~ "Household food and non-alcoholic beverages CVM",
+                                          cdid == "ADIT" ~ "Alcoholic drinks (off licence only) CVM",
+                                          cdid == "ADML" ~ "Catering CVM")) |> 
   dplyr::filter(date >= "2002-01-01") |>
   ggplot2::ggplot() +
   ggplot2::geom_line(ggplot2::aes(x = date, y = value, colour = series)) +
