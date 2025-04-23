@@ -88,26 +88,11 @@ Consumer Trends</a> data.</p>
 <span><span class="co">#&gt;   materials CVM NAYear £m...1041`</span></span>
 <span><span class="va">ct_year</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_ct_year.html">get_ct_year</a></span><span class="op">(</span><span class="va">ct</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># alternate c("ABZV","ADFM","ADIG","ABQI","ADIP","ADIT","ADML")</span></span>
-<span><span class="va">cdids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ABZV"</span>, <span class="st">"ADFM"</span>, <span class="st">"ADXO"</span>, <span class="st">"ADXP"</span><span class="op">)</span></span>
+<span><span class="co"># The data we need is chained volume and current prices not seasonally adjusted</span></span>
+<span><span class="va">series</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ABZV"</span>,<span class="st">"ADFM"</span>,<span class="st">"ADIG"</span>,<span class="st">"ADIP"</span>,<span class="st">"ADIT"</span>,<span class="st">"ADML"</span>,<span class="st">"ABQI"</span><span class="op">)</span></span>
 <span></span>
-<span></span>
-<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">ct_metadata</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cdid</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">cdids</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">ct_year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>series <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span><span class="va">cdid</span> <span class="op">==</span> <span class="st">"ABZV"</span> <span class="op">~</span> <span class="st">"Household food and non-alcoholic beverages"</span>,</span>
-<span>                                          <span class="va">cdid</span> <span class="op">==</span> <span class="st">"ADFM"</span> <span class="op">~</span> <span class="st">"Alcoholic drinks (off licence only)"</span>,</span>
-<span>                                          <span class="va">cdid</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ADXO"</span>, <span class="st">"ADXP"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Catering"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">series</span>, <span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(cdid)`</span></span>
-<span><span class="co">#&gt; `summarise()` has grouped output by 'series'. You can override using the</span></span>
-<span><span class="co">#&gt; `.groups` argument.</span></span>
-<span></span>
-<span></span>
-<span> <span class="va">alternate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ABZV"</span>,<span class="st">"ADFM"</span>,<span class="st">"ADIG"</span>,<span class="st">"ADIP"</span>,<span class="st">"ADIT"</span>,<span class="st">"ADML"</span>,<span class="st">"ABQI"</span><span class="op">)</span></span>
 <span><span class="va">auk_data</span> <span class="op">&lt;-</span> <span class="va">ct_metadata</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cdid</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">alternate</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cdid</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">series</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">ct_year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>series <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span><span class="va">cdid</span> <span class="op">==</span> <span class="st">"ABZV"</span> <span class="op">~</span> <span class="st">"Household food and non-alcoholic beverages"</span>,</span>
 <span>                                          <span class="va">cdid</span> <span class="op">==</span> <span class="st">"ADFM"</span> <span class="op">~</span> <span class="st">"Alcoholic drinks (off licence only)"</span>,</span>
@@ -128,16 +113,699 @@ Consumer Trends</a> data.</p>
 <span><span class="co">#&gt; `summarise()` has grouped output by 'series'. You can override using the</span></span>
 <span><span class="co">#&gt; `.groups` argument.</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="va">auk_data</span>,<span class="st">"figure_14_5_food_expenditure.csv"</span><span class="op">)</span> <span class="co">#maybe saving here not optimal? For David to check</span></span>
-<span></span>
-<span></span>
-<span></span>
-<span><span class="va">data</span> <span class="op">|&gt;</span> </span>
+<span><span class="co"># write.csv(auk_data,"figure_14_5_food_expenditure.csv")</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">auk_data</span><span class="op">)</span></span></code></pre></div>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="2%">
+<col width="6%">
+<col width="7%">
+<col width="1%">
+<col width="2%">
+<col width="7%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="13%">
+<col width="8%">
+<col width="8%">
+<col width="7%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">date</th>
+<th align="right">Alcoholic drinks (off licence only)</th>
+<th align="right">Alcoholic drinks (off licence only) CVM</th>
+<th align="right">Catering</th>
+<th align="right">Catering CVM</th>
+<th align="right">Household final consumption expenditure</th>
+<th align="right">Household food and non-alcoholic beverages</th>
+<th align="right">Household food and non-alcoholic beverages CVM</th>
+<th align="right">Total food, drink and catering expenditure</th>
+<th align="right">Total food, drink and catering expenditure CVM</th>
+<th align="left">percent of total expenditure- Total food, drink and
+catering expenditure</th>
+<th align="left">percent of total expenditure- household food</th>
+<th align="left">percent of total expenditure- food eaten out</th>
+<th align="left">percent of total expenditure- alcohol</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">1985-01-01</td>
+<td align="right">4483</td>
+<td align="right">10835</td>
+<td align="right">19224</td>
+<td align="right">94526</td>
+<td align="right">250075</td>
+<td align="right">30662</td>
+<td align="right">76845</td>
+<td align="right">54369</td>
+<td align="right">182206</td>
+<td align="left">21.7%</td>
+<td align="left">12.3%</td>
+<td align="left">7.7%</td>
+<td align="left">1.8%</td>
+</tr>
+<tr class="even">
+<td align="left">1986-01-01</td>
+<td align="right">4723</td>
+<td align="right">10956</td>
+<td align="right">20655</td>
+<td align="right">94841</td>
+<td align="right">274492</td>
+<td align="right">32714</td>
+<td align="right">80086</td>
+<td align="right">58092</td>
+<td align="right">185883</td>
+<td align="left">21.2%</td>
+<td align="left">11.9%</td>
+<td align="left">7.5%</td>
+<td align="left">1.7%</td>
+</tr>
+<tr class="odd">
+<td align="left">1987-01-01</td>
+<td align="right">5053</td>
+<td align="right">11374</td>
+<td align="right">22426</td>
+<td align="right">96352</td>
+<td align="right">301035</td>
+<td align="right">34504</td>
+<td align="right">82358</td>
+<td align="right">61983</td>
+<td align="right">190084</td>
+<td align="left">20.6%</td>
+<td align="left">11.5%</td>
+<td align="left">7.4%</td>
+<td align="left">1.7%</td>
+</tr>
+<tr class="even">
+<td align="left">1988-01-01</td>
+<td align="right">5431</td>
+<td align="right">11824</td>
+<td align="right">27657</td>
+<td align="right">102109</td>
+<td align="right">337564</td>
+<td align="right">36540</td>
+<td align="right">84339</td>
+<td align="right">69628</td>
+<td align="right">198272</td>
+<td align="left">20.6%</td>
+<td align="left">10.8%</td>
+<td align="left">8.2%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">1989-01-01</td>
+<td align="right">5743</td>
+<td align="right">12016</td>
+<td align="right">30926</td>
+<td align="right">104453</td>
+<td align="right">369269</td>
+<td align="right">39314</td>
+<td align="right">86326</td>
+<td align="right">75983</td>
+<td align="right">202795</td>
+<td align="left">20.6%</td>
+<td align="left">10.6%</td>
+<td align="left">8.4%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="even">
+<td align="left">1990-01-01</td>
+<td align="right">6320</td>
+<td align="right">12225</td>
+<td align="right">34018</td>
+<td align="right">105538</td>
+<td align="right">403457</td>
+<td align="right">42280</td>
+<td align="right">86315</td>
+<td align="right">82618</td>
+<td align="right">204078</td>
+<td align="left">20.5%</td>
+<td align="left">10.5%</td>
+<td align="left">8.4%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">1991-01-01</td>
+<td align="right">6829</td>
+<td align="right">11879</td>
+<td align="right">35623</td>
+<td align="right">106378</td>
+<td align="right">430384</td>
+<td align="right">44638</td>
+<td align="right">86778</td>
+<td align="right">87090</td>
+<td align="right">205035</td>
+<td align="left">20.2%</td>
+<td align="left">10.4%</td>
+<td align="left">8.3%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="even">
+<td align="left">1992-01-01</td>
+<td align="right">7033</td>
+<td align="right">11753</td>
+<td align="right">36577</td>
+<td align="right">107208</td>
+<td align="right">451732</td>
+<td align="right">45845</td>
+<td align="right">88046</td>
+<td align="right">89455</td>
+<td align="right">207007</td>
+<td align="left">19.8%</td>
+<td align="left">10.1%</td>
+<td align="left">8.1%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">1993-01-01</td>
+<td align="right">7309</td>
+<td align="right">11986</td>
+<td align="right">39440</td>
+<td align="right">109093</td>
+<td align="right">479582</td>
+<td align="right">47295</td>
+<td align="right">90159</td>
+<td align="right">94044</td>
+<td align="right">211238</td>
+<td align="left">19.6%</td>
+<td align="left">9.9%</td>
+<td align="left">8.2%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="even">
+<td align="left">1994-01-01</td>
+<td align="right">7874</td>
+<td align="right">12953</td>
+<td align="right">41198</td>
+<td align="right">107420</td>
+<td align="right">502932</td>
+<td align="right">47833</td>
+<td align="right">91502</td>
+<td align="right">96905</td>
+<td align="right">211875</td>
+<td align="left">19.3%</td>
+<td align="left">9.5%</td>
+<td align="left">8.2%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">1995-01-01</td>
+<td align="right">7747</td>
+<td align="right">12447</td>
+<td align="right">43033</td>
+<td align="right">107313</td>
+<td align="right">530255</td>
+<td align="right">49682</td>
+<td align="right">92105</td>
+<td align="right">100462</td>
+<td align="right">211865</td>
+<td align="left">18.9%</td>
+<td align="left">9.4%</td>
+<td align="left">8.1%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="even">
+<td align="left">1996-01-01</td>
+<td align="right">8782</td>
+<td align="right">13920</td>
+<td align="right">47702</td>
+<td align="right">107051</td>
+<td align="right">568801</td>
+<td align="right">53023</td>
+<td align="right">94906</td>
+<td align="right">109507</td>
+<td align="right">215877</td>
+<td align="left">19.3%</td>
+<td align="left">9.3%</td>
+<td align="left">8.4%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="odd">
+<td align="left">1997-01-01</td>
+<td align="right">9715</td>
+<td align="right">15329</td>
+<td align="right">49558</td>
+<td align="right">109625</td>
+<td align="right">608841</td>
+<td align="right">53488</td>
+<td align="right">94103</td>
+<td align="right">112761</td>
+<td align="right">219057</td>
+<td align="left">18.5%</td>
+<td align="left">8.8%</td>
+<td align="left">8.1%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="even">
+<td align="left">1998-01-01</td>
+<td align="right">10211</td>
+<td align="right">15798</td>
+<td align="right">52331</td>
+<td align="right">111284</td>
+<td align="right">641369</td>
+<td align="right">55522</td>
+<td align="right">96775</td>
+<td align="right">118064</td>
+<td align="right">223857</td>
+<td align="left">18.4%</td>
+<td align="left">8.7%</td>
+<td align="left">8.2%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">1999-01-01</td>
+<td align="right">10555</td>
+<td align="right">16147</td>
+<td align="right">55119</td>
+<td align="right">113202</td>
+<td align="right">671004</td>
+<td align="right">57167</td>
+<td align="right">99269</td>
+<td align="right">122841</td>
+<td align="right">228618</td>
+<td align="left">18.3%</td>
+<td align="left">8.5%</td>
+<td align="left">8.2%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="even">
+<td align="left">2000-01-01</td>
+<td align="right">10924</td>
+<td align="right">16686</td>
+<td align="right">58008</td>
+<td align="right">116108</td>
+<td align="right">702075</td>
+<td align="right">57198</td>
+<td align="right">99775</td>
+<td align="right">126130</td>
+<td align="right">232569</td>
+<td align="left">18.0%</td>
+<td align="left">8.1%</td>
+<td align="left">8.3%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">2001-01-01</td>
+<td align="right">11111</td>
+<td align="right">16954</td>
+<td align="right">59861</td>
+<td align="right">115884</td>
+<td align="right">728182</td>
+<td align="right">59321</td>
+<td align="right">99914</td>
+<td align="right">130293</td>
+<td align="right">232752</td>
+<td align="left">17.9%</td>
+<td align="left">8.1%</td>
+<td align="left">8.2%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="even">
+<td align="left">2002-01-01</td>
+<td align="right">11552</td>
+<td align="right">17754</td>
+<td align="right">62363</td>
+<td align="right">116480</td>
+<td align="right">751921</td>
+<td align="right">60577</td>
+<td align="right">101012</td>
+<td align="right">134492</td>
+<td align="right">235246</td>
+<td align="left">17.9%</td>
+<td align="left">8.1%</td>
+<td align="left">8.3%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="odd">
+<td align="left">2003-01-01</td>
+<td align="right">12509</td>
+<td align="right">18919</td>
+<td align="right">65928</td>
+<td align="right">119940</td>
+<td align="right">785769</td>
+<td align="right">64074</td>
+<td align="right">105531</td>
+<td align="right">142511</td>
+<td align="right">244390</td>
+<td align="left">18.1%</td>
+<td align="left">8.2%</td>
+<td align="left">8.4%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="even">
+<td align="left">2004-01-01</td>
+<td align="right">12408</td>
+<td align="right">18908</td>
+<td align="right">68556</td>
+<td align="right">121879</td>
+<td align="right">823286</td>
+<td align="right">66195</td>
+<td align="right">108203</td>
+<td align="right">147159</td>
+<td align="right">248990</td>
+<td align="left">17.9%</td>
+<td align="left">8.0%</td>
+<td align="left">8.3%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="odd">
+<td align="left">2005-01-01</td>
+<td align="right">12553</td>
+<td align="right">19555</td>
+<td align="right">71731</td>
+<td align="right">123648</td>
+<td align="right">862248</td>
+<td align="right">67822</td>
+<td align="right">109424</td>
+<td align="right">152106</td>
+<td align="right">252627</td>
+<td align="left">17.6%</td>
+<td align="left">7.9%</td>
+<td align="left">8.3%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="even">
+<td align="left">2006-01-01</td>
+<td align="right">12713</td>
+<td align="right">19684</td>
+<td align="right">73363</td>
+<td align="right">122140</td>
+<td align="right">896026</td>
+<td align="right">70234</td>
+<td align="right">110464</td>
+<td align="right">156310</td>
+<td align="right">252288</td>
+<td align="left">17.4%</td>
+<td align="left">7.8%</td>
+<td align="left">8.2%</td>
+<td align="left">1.4%</td>
+</tr>
+<tr class="odd">
+<td align="left">2007-01-01</td>
+<td align="right">13298</td>
+<td align="right">20557</td>
+<td align="right">76589</td>
+<td align="right">123078</td>
+<td align="right">938849</td>
+<td align="right">73367</td>
+<td align="right">110381</td>
+<td align="right">163254</td>
+<td align="right">254016</td>
+<td align="left">17.4%</td>
+<td align="left">7.8%</td>
+<td align="left">8.2%</td>
+<td align="left">1.4%</td>
+</tr>
+<tr class="even">
+<td align="left">2008-01-01</td>
+<td align="right">13547</td>
+<td align="right">20552</td>
+<td align="right">77888</td>
+<td align="right">120072</td>
+<td align="right">966833</td>
+<td align="right">77885</td>
+<td align="right">107422</td>
+<td align="right">169320</td>
+<td align="right">248046</td>
+<td align="left">17.5%</td>
+<td align="left">8.1%</td>
+<td align="left">8.1%</td>
+<td align="left">1.4%</td>
+</tr>
+<tr class="odd">
+<td align="left">2009-01-01</td>
+<td align="right">14307</td>
+<td align="right">20064</td>
+<td align="right">73830</td>
+<td align="right">111044</td>
+<td align="right">945642</td>
+<td align="right">80070</td>
+<td align="right">104774</td>
+<td align="right">168207</td>
+<td align="right">235882</td>
+<td align="left">17.8%</td>
+<td align="left">8.5%</td>
+<td align="left">7.8%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="even">
+<td align="left">2010-01-01</td>
+<td align="right">14519</td>
+<td align="right">19905</td>
+<td align="right">76863</td>
+<td align="right">111915</td>
+<td align="right">974812</td>
+<td align="right">81424</td>
+<td align="right">103570</td>
+<td align="right">172806</td>
+<td align="right">235390</td>
+<td align="left">17.7%</td>
+<td align="left">8.4%</td>
+<td align="left">7.9%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="odd">
+<td align="left">2011-01-01</td>
+<td align="right">15867</td>
+<td align="right">20047</td>
+<td align="right">80694</td>
+<td align="right">111055</td>
+<td align="right">1012223</td>
+<td align="right">87431</td>
+<td align="right">105451</td>
+<td align="right">183992</td>
+<td align="right">236553</td>
+<td align="left">18.2%</td>
+<td align="left">8.6%</td>
+<td align="left">8.0%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="even">
+<td align="left">2012-01-01</td>
+<td align="right">16686</td>
+<td align="right">20349</td>
+<td align="right">83627</td>
+<td align="right">110804</td>
+<td align="right">1048923</td>
+<td align="right">89867</td>
+<td align="right">105035</td>
+<td align="right">190180</td>
+<td align="right">236188</td>
+<td align="left">18.1%</td>
+<td align="left">8.6%</td>
+<td align="left">8.0%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">2013-01-01</td>
+<td align="right">18537</td>
+<td align="right">21477</td>
+<td align="right">87279</td>
+<td align="right">112925</td>
+<td align="right">1102122</td>
+<td align="right">93003</td>
+<td align="right">104893</td>
+<td align="right">198819</td>
+<td align="right">239295</td>
+<td align="left">18.0%</td>
+<td align="left">8.4%</td>
+<td align="left">7.9%</td>
+<td align="left">1.7%</td>
+</tr>
+<tr class="even">
+<td align="left">2014-01-01</td>
+<td align="right">17844</td>
+<td align="right">20602</td>
+<td align="right">91468</td>
+<td align="right">115047</td>
+<td align="right">1148347</td>
+<td align="right">94365</td>
+<td align="right">106540</td>
+<td align="right">203677</td>
+<td align="right">242189</td>
+<td align="left">17.7%</td>
+<td align="left">8.2%</td>
+<td align="left">8.0%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">2015-01-01</td>
+<td align="right">18232</td>
+<td align="right">21117</td>
+<td align="right">94713</td>
+<td align="right">116711</td>
+<td align="right">1176477</td>
+<td align="right">92445</td>
+<td align="right">107361</td>
+<td align="right">205390</td>
+<td align="right">245189</td>
+<td align="left">17.5%</td>
+<td align="left">7.9%</td>
+<td align="left">8.1%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="even">
+<td align="left">2016-01-01</td>
+<td align="right">18269</td>
+<td align="right">21230</td>
+<td align="right">99380</td>
+<td align="right">119945</td>
+<td align="right">1233491</td>
+<td align="right">98106</td>
+<td align="right">116127</td>
+<td align="right">215755</td>
+<td align="right">257302</td>
+<td align="left">17.5%</td>
+<td align="left">8.0%</td>
+<td align="left">8.1%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="odd">
+<td align="left">2017-01-01</td>
+<td align="right">19916</td>
+<td align="right">22426</td>
+<td align="right">105746</td>
+<td align="right">124456</td>
+<td align="right">1278689</td>
+<td align="right">103448</td>
+<td align="right">119696</td>
+<td align="right">229110</td>
+<td align="right">266578</td>
+<td align="left">17.9%</td>
+<td align="left">8.1%</td>
+<td align="left">8.3%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="even">
+<td align="left">2018-01-01</td>
+<td align="right">21386</td>
+<td align="right">23444</td>
+<td align="right">109357</td>
+<td align="right">124894</td>
+<td align="right">1323702</td>
+<td align="right">107488</td>
+<td align="right">121847</td>
+<td align="right">238231</td>
+<td align="right">270185</td>
+<td align="left">18.0%</td>
+<td align="left">8.1%</td>
+<td align="left">8.3%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">2019-01-01</td>
+<td align="right">21383</td>
+<td align="right">23035</td>
+<td align="right">112055</td>
+<td align="right">124644</td>
+<td align="right">1357018</td>
+<td align="right">109531</td>
+<td align="right">122598</td>
+<td align="right">242969</td>
+<td align="right">270277</td>
+<td align="left">17.9%</td>
+<td align="left">8.1%</td>
+<td align="left">8.3%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="even">
+<td align="left">2020-01-01</td>
+<td align="right">26797</td>
+<td align="right">27987</td>
+<td align="right">72795</td>
+<td align="right">79789</td>
+<td align="right">1197959</td>
+<td align="right">115658</td>
+<td align="right">128452</td>
+<td align="right">215250</td>
+<td align="right">236228</td>
+<td align="left">18.0%</td>
+<td align="left">9.7%</td>
+<td align="left">6.1%</td>
+<td align="left">2.2%</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-01</td>
+<td align="right">26705</td>
+<td align="right">27365</td>
+<td align="right">98590</td>
+<td align="right">104330</td>
+<td align="right">1319433</td>
+<td align="right">117207</td>
+<td align="right">129705</td>
+<td align="right">242502</td>
+<td align="right">261400</td>
+<td align="left">18.4%</td>
+<td align="left">8.9%</td>
+<td align="left">7.5%</td>
+<td align="left">2.0%</td>
+</tr>
+<tr class="even">
+<td align="left">2022-01-01</td>
+<td align="right">24380</td>
+<td align="right">24380</td>
+<td align="right">127176</td>
+<td align="right">127176</td>
+<td align="right">1519937</td>
+<td align="right">127216</td>
+<td align="right">127216</td>
+<td align="right">278772</td>
+<td align="right">278772</td>
+<td align="left">18.3%</td>
+<td align="left">8.4%</td>
+<td align="left">8.4%</td>
+<td align="left">1.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">2023-01-01</td>
+<td align="right">24744</td>
+<td align="right">24426</td>
+<td align="right">136539</td>
+<td align="right">126671</td>
+<td align="right">1621180</td>
+<td align="right">143241</td>
+<td align="right">125386</td>
+<td align="right">304524</td>
+<td align="right">276483</td>
+<td align="left">18.8%</td>
+<td align="left">8.8%</td>
+<td align="left">8.4%</td>
+<td align="left">1.5%</td>
+</tr>
+<tr class="even">
+<td align="left">2024-01-01</td>
+<td align="right">25889</td>
+<td align="right">24673</td>
+<td align="right">142173</td>
+<td align="right">123985</td>
+<td align="right">1677123</td>
+<td align="right">146028</td>
+<td align="right">124487</td>
+<td align="right">314090</td>
+<td align="right">273145</td>
+<td align="left">18.7%</td>
+<td align="left">8.7%</td>
+<td align="left">8.5%</td>
+<td align="left">1.5%</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span> <span class="va">ct_metadata</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cdid</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ADIP"</span>, <span class="st">"ADIT"</span>, <span class="st">"ADML"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">ct_year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>series <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span><span class="va">cdid</span> <span class="op">==</span> <span class="st">"ADIP"</span> <span class="op">~</span> <span class="st">"Household food and non-alcoholic beverages CVM"</span>,</span>
+<span>                                          <span class="va">cdid</span> <span class="op">==</span> <span class="st">"ADIT"</span> <span class="op">~</span> <span class="st">"Alcoholic drinks (off licence only) CVM"</span>,</span>
+<span>                                          <span class="va">cdid</span> <span class="op">==</span> <span class="st">"ADML"</span> <span class="op">~</span> <span class="st">"Catering CVM"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">&gt;=</span> <span class="st">"2002-01-01"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">value</span>, colour <span class="op">=</span> <span class="va">series</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_comma</a></span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">0.001</span><span class="op">)</span>,<span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(cdid)`</span></span></code></pre></div>
 <p><img src="ct_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
   </main>
