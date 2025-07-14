@@ -4,15 +4,17 @@
 \alias{get_bpe}
 \title{Extract data from a Business Population Estimate xlsx file}
 \usage{
-get_bpe(rawfile, year = 2024)
+get_bpe(rawfile, year = 2024, sic_digits = 2)
 }
 \arguments{
 \item{rawfile}{A BPE xlsx file. If omitted, file will be downloaded}
 
 \item{year}{If data is to be downloaded, the year required (> 2012)}
+
+\item{sic_digits}{The level of SIC detail to return (2 or 3)}
 }
 \value{
-A datafrae of BPE data
+A dataframe of BPE data
 }
 \description{
 Extract data from a Business Population Estimate xlsx file

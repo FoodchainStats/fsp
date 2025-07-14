@@ -2,8 +2,9 @@
 #'
 #' @param rawfile A BPE xlsx file. If omitted, file will be downloaded
 #' @param year If data is to be downloaded, the year required (> 2012) 
+#' @param sic_digits The level of SIC detail to return (2 or 3)
 #'
-#' @returns A datafrae of BPE data
+#' @returns A dataframe of BPE data
 #' @family Business Population Estimates
 #' @export
 #'
@@ -16,7 +17,15 @@
 #' file <- acquire_bpe(year = 2023)
 #' data <- get_bpe(file)
 #' }
-get_bpe <- function(rawfile, year = 2024) {
+get_bpe <- function(rawfile, year = 2024, sic_digits = 2) {
+  
+  if(sic_digits == 2) {
+    sht <- "Table 6"
+  } else  if(sic_digits == 3) {
+    sht <- "Table 7"
+  } else {
+    stop("sic_digits must be 2 or 3")
+  }
   
   if(!missing(rawfile)){
     if(!file.exists(rawfile)) stop(paste(rawfile, "does not exist"))
@@ -29,7 +38,7 @@ get_bpe <- function(rawfile, year = 2024) {
     rawfile <- tmp
   }  
 
-  cells <- tidyxl::xlsx_cells(rawfile, sheets = "Table 6")
+  cells <- tidyxl::xlsx_cells(rawfile, sheets = sht)
   formats <- tidyxl::xlsx_formats(rawfile)
   
   bold <- formats$local$font$bold
@@ -43,7 +52,7 @@ get_bpe <- function(rawfile, year = 2024) {
                         direction = "left-up",
                         name = "sic_desc") |> 
     unpivotr::behead("left", "size") |> 
-    dplyr::mutate(sic_id = stringr::str_extract(.data$sic_desc, "[0-9][0-9]"),
+    dplyr::mutate(sic_id = stringr::str_extract(.data$sic_desc, "[0-9][0-9][0-9]?"),
                   year = year,
                   category = stringr::str_replace_all(.data$category, "\\\r", " "),
                   category = stringr::str_replace_all(.data$category, "\\\n", " "),
